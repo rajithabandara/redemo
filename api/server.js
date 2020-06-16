@@ -18,6 +18,12 @@ app.get("/randomint", (req, res) => {
   res.json(payload);
 });
 
+app.get("/hardcode", (req, res) => {
+  let hardcode = 5; //Math.round(Math.random() * 50000) % 20;
+  let payload = { hardcode };
+  res.json(payload);
+});
+
 app.listen(port, () => {
   console.log("listening on " + port);
 });
