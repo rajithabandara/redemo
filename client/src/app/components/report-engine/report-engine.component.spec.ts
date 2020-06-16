@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PlainSvgComponent } from './plain-svg.component';
+import { ReportEngineComponent } from './report-engine.component';
 
-describe('PlainSvgComponent', () => {
-  let component: PlainSvgComponent;
-  let fixture: ComponentFixture<PlainSvgComponent>;
+describe('ReportEngineComponent', () => {
+  let component: ReportEngineComponent;
+  let fixture: ComponentFixture<ReportEngineComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PlainSvgComponent ]
+      declarations: [ ReportEngineComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PlainSvgComponent);
+    fixture = TestBed.createComponent(ReportEngineComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

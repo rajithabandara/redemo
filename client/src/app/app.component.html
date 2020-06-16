@@ -1,7 +1,7 @@
 
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Report Engine</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,29 +12,31 @@
     <ul class="navbar-nav mr-auto">
 
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['reportengine/plainsvg']" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['reportengine']" [queryParams]="{item:'plain'}" routerLinkActive="active">
             <img src="../assets/svg.svg"  />
          Plain SVG</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['reportengine/circles']"  routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['reportengine']" [queryParams]="{item:'circle'}"  routerLinkActive="active">
             <img src="../assets/circles.svg"  /> Circles</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['reportengine/rectan']" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['reportengine']" [queryParams]="{item:'rectan'}" routerLinkActive="active">
           <img src="../assets/open-menu.svg"  /> Rectangles</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['reportengine/ellipse']" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['reportengine']" [queryParams]="{item:'ellipse'}" routerLinkActive="active">
           <img src="../assets/planet.svg"  /> Ellipse</a>
       </li>
     </ul>
     <ul class="navbar-nav">
-
+    
 
     </ul>
   </div>
 </nav>
-<div class="container">
+<br>
+    <img src="../assets/add.svg"  /><br><br>
+    <img src="../assets/minus.svg"  />
     <router-outlet></router-outlet>
-</div>
+

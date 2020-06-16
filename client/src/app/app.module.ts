@@ -3,18 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PlainSvgComponent } from './components/plain-svg/plain-svg.component';
-import { CirclesComponent } from './components/circles/circles.component';
-import { RetanglesComponent } from './components/retangles/retangles.component';
-import { EllipseComponent } from './components/ellipse/ellipse.component';
+import { ReportEngineComponent } from './components/report-engine/report-engine.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    PlainSvgComponent,
-    CirclesComponent,
-    RetanglesComponent,
-    EllipseComponent
+    ReportEngineComponent,
+   
   ],
   imports: [
     BrowserModule,
