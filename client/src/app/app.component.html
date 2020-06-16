@@ -1,42 +1,65 @@
-
-
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Report Engine</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['reportengine']" [queryParams]="{item:'plain'}" routerLinkActive="active">
-            <img src="../assets/svg.svg"  />
-         Plain SVG</a>
+        <a
+          class="nav-link"
+          [routerLink]="['reportengine']"
+          [queryParams]="{ item: 'plain' }"
+          routerLinkActive="active"
+        >
+          <img class="navicon" src="../assets/svg.svg" />
+          Plain SVG</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['reportengine']" [queryParams]="{item:'circle'}"  routerLinkActive="active">
-            <img src="../assets/circles.svg"  /> Circles</a>
+        <a
+          class="nav-link"
+          [routerLink]="['reportengine']"
+          [queryParams]="{ item: 'circle' }"
+          routerLinkActive="active"
+        >
+          <img class="navicon" src="../assets/circles.svg" /> Circles</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['reportengine']" [queryParams]="{item:'rectan'}" routerLinkActive="active">
-          <img src="../assets/open-menu.svg"  /> Rectangles</a>
+        <a
+          class="nav-link"
+          [routerLink]="['reportengine']"
+          [queryParams]="{ item: 'rectan' }"
+          routerLinkActive="active"
+        >
+          <img class="navicon" src="../assets/open-menu.svg" /> Rectangles</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['reportengine']" [queryParams]="{item:'ellipse'}" routerLinkActive="active">
-          <img src="../assets/planet.svg"  /> Ellipse</a>
+        <a
+          class="nav-link"
+          [routerLink]="['reportengine']"
+          [queryParams]="{ item: 'ellipse' }"
+          routerLinkActive="active"
+        >
+          <img class="navicon" src="../assets/planet.svg" /> Ellipse</a
+        >
       </li>
     </ul>
-    <ul class="navbar-nav">
-    
-
-    </ul>
+    <ul class="navbar-nav"></ul>
   </div>
 </nav>
-<br>
-    <img src="../assets/add.svg"  /><br><br>
-    <img src="../assets/minus.svg"  />
-    <router-outlet></router-outlet>
-
+<br />
+<img src="../assets/add.svg" /><br /><br />
+<img src="../assets/minus.svg" />
+<router-outlet></router-outlet>

@@ -3,13 +3,15 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ReportEngineComponent } from './components/report-engine/report-engine.component';
+import { ReportEngineComponent } from './report-engine/report-engine.component';
+import { SvgcircleComponent } from './components/svgcircle/svgcircle.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ReportEngineComponent,
+    SvgcircleComponent,
    
   ],
   imports: [
