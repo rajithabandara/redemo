@@ -12,6 +12,12 @@ app.get("/", (req, res) => {
   res.send("server is up");
 });
 
+app.get("/randomint", (req, res) => {
+  let randomint = Math.round(Math.random() * 50000) % 20;
+  let payload = { randomint };
+  res.json(payload);
+});
+
 app.listen(port, () => {
   console.log("listening on " + port);
 });
