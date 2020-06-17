@@ -18,9 +18,9 @@ app.get("/randomint", (req, res) => {
   res.json(payload);
 });
 
-app.get("/hardcode", (req, res) => {
-  let hardcode = 5; //Math.round(Math.random() * 50000) % 20;
-  let payload = { hardcode };
+app.get("/timeinseconds", (req, res) => {
+  let timeinseconds = Math.round(new Date().getSeconds() / 10); //5; //Math.round(Math.random() * 50000) % 20;
+  let payload = { timeinseconds };
   res.json(payload);
 });
 

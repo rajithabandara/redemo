@@ -1,15 +1,9 @@
-<p>report-engine works!</p>
-
-<div class="container">
-  <app-svgcircle [coordinates]="companies"></app-svgcircle>
-
-  <!-- <app-svgcircle
+<!-- <app-svgcircle
     *ngFor="let item of companies; let i = index"
     [xcoordinate]="100 * i"
     [ycoordinate]="50 * i"
   > -->
-  <!-- </app-svgcircle> -->
-</div>
+<!-- </app-svgcircle> -->
 
 <!-- <svg width="800">
   <circle
@@ -21,25 +15,28 @@
   />
 </svg> -->
 
+<div class="container">
+  <div [ngSwitch]="qparam">
+    <div *ngSwitchCase="'plain'">
+      <h2>Plainsvg</h2>
 
-
-<div [ngSwitch]="qparam">
-  <div *ngSwitchCase="'plain'">
-    <h2>Plainsvg</h2>
-    <!-- <div class="container">
+      <!-- <div class="container">
       <app-svgcircle [coordinates]="companies"></app-svgcircle>
     </div> -->
+    </div>
+    <div *ngSwitchCase="'rect'">
+      <h2>Rectangles</h2>
+      <app-svgrect [coordinates]="rectcoordinates"></app-svgrect>
+    </div>
+    <div *ngSwitchCase="'ellipse'">
+      <h2>Ellipse</h2>
+    </div>
+    <div *ngSwitchCase="'circle'">
+      <h2>circles</h2>
+      <!-- <app-svgcircle [coordinates]="companies"></app-svgcircle> -->
+    </div>
+    <div *ngSwitchDefault>
+      <h2>Does not match for the parameters</h2>
+    </div>
   </div>
-  <div *ngSwitchCase="'rectan'">
-    <h2>Rectangles</h2>
-  </div>
-  <div *ngSwitchCase="'ellipse'">
-    <h2>Ellipse</h2>
-  </div>
-  <div *ngSwitchCase="'circle'">
-    <h2>circles</h2>
-  </div>
-  <div *ngSwitchDefault>
-    <h2>Does not match for the parameters</h2>
-  </div>
-
+</div>

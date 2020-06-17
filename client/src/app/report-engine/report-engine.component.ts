@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SvgcircleComponent } from '../components/svgcircle/svgcircle.component';
 import { ActivatedRoute } from '@angular/router';
+import { HttpdataService } from '../httpdata.service';
 
 @Component({
   selector: 'app-report-engine',
@@ -8,23 +8,39 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./report-engine.component.css'],
 })
 export class ReportEngineComponent implements OnInit {
-  public companies: any[] = [
-    { id: 0, name: 'Available' },
-    { id: 1, name: 'Ready' },
-    { id: 2, name: 'Started' },
-  ];
+  public rectcoordinates = [];
 
-
-  qparam:any;
-  constructor(router:ActivatedRoute) {
-    router.queryParamMap.subscribe(data =>{
+  qparam: any;
+  constructor(router: ActivatedRoute, httpdata: HttpdataService) {
+    router.queryParamMap.subscribe((data) => {
       this.qparam = data.get('item');
       console.log(this.qparam);
-    })
+
+      switch (this.qparam) {
+        case 'rect':
+          httpdata.getservertime().subscribe((data) => {
+            console.log(data);
+
+            this.rectcoordinates = [];
+
+            for (let i = 0; i < data.timeinseconds; i++) {
+              let x = (Math.random() * 5000) % 500;
+              let y = (Math.random() * 5000) % 500;
+
+              this.rectcoordinates.push({
+                x: x,
+                y: y,
+              });
+            }
+          });
+
+          break;
+
+        default:
+          break;
+      }
+    });
   }
 
-
-  
   ngOnInit(): void {}
 }
-
