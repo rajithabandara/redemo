@@ -1,0 +1,59 @@
+<div class="container">
+
+<div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Circles</h5>
+          <svg  height="130" width="155">
+              <defs>
+                <filter id="f1" x="0" y="0" width="200%" height="200%">
+                  <feOffset result="offOut" in="SourceGraphic" dx="50" dy="50" />
+                  <feBlend in="SourceGraphic" in2="offOut" mode="normal" />
+                </filter>
+
+                 </defs>
+             <circle cx="40" cy="40"r="40" style="fill:blue;stroke:pink;stroke-width:3;opacity:0.5"  filter="url(#f1)" />
+            </svg><br>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Rectangles</h5>
+          <svg height="130" width="155">
+              <defs>
+                <filter id="f1" x="0" y="0" width="200%" height="200%">
+                  <feOffset result="offOut" in="SourceGraphic" dx="30" dy="50" />
+                  <feBlend in="SourceGraphic" in2="offOut" mode="normal" />
+                </filter>
+              </defs>
+              <rect width="90" height="80" stroke="green" stroke-width="3" fill="yellow" filter="url(#f1)" />
+
+            </svg><br>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Ellipse</h5>
+            <svg height="130" width="155">
+                <defs>
+                  <filter id="f1" cx="10" y="50" >
+                    <feOffset result="offOut" in="SourceGraphic" dx="30" dy="50" />
+                    <feBlend in="SourceGraphic" in2="offOut" mode="normal" />
+                  </filter>
+                </defs>
+                <!-- <rect width="90" height="90" stroke="green" stroke-width="3" fill="yellow" filter="url(#f1)" /> -->
+                <ellipse cx="80" cy="40" rx="55" ry="35" style="fill:red;stroke:black;stroke-width:3;opacity:0.5" filter="url(#f1)" />
+              </svg><br>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

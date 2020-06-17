@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+
+
+
 @Component({
   selector: 'app-svgcircle',
   templateUrl: './svgcircle.component.html',

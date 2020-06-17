@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SvgcircleComponent } from '../components/svgcircle/svgcircle.component';
 import { ActivatedRoute } from '@angular/router';
+// import { CirclesService } from '../services/circles.service';
 
 @Component({
   selector: 'app-report-engine',
@@ -12,19 +13,25 @@ export class ReportEngineComponent implements OnInit {
     { id: 0, name: 'Available' },
     { id: 1, name: 'Ready' },
     { id: 2, name: 'Started' },
+
   ];
 
 
-  qparam:any;
-  constructor(router:ActivatedRoute) {
-    router.queryParamMap.subscribe(data =>{
+  qparam: any;
+  constructor(router: ActivatedRoute,
+   ) {
+
+    router.queryParamMap.subscribe(data => {
       this.qparam = data.get('item');
       console.log(this.qparam);
     })
   }
 
 
-  
-  ngOnInit(): void {}
+
+  ngOnInit(): void {
+    
+
+   }
 }
 
