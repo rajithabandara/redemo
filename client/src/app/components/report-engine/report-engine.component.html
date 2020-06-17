@@ -1,1 +1,16 @@
-<p>report-engine works!</p>
+<div [ngSwitch]="qparam">
+  <div *ngSwitchCase="'plain'">
+    <h2>Plainsvg</h2>
+  </div>
+  <div *ngSwitchCase="'rectan'">
+    <h2>Rectangles</h2>
+  </div>
+  <div *ngSwitchCase="'ellipse'">
+    <h2>Ellipse</h2>
+  </div>
+  <div *ngSwitchCase="'circle'">
+    <h2>circles</h2>
+  </div>
+  <div *ngSwitchDefault>
+    <h2>Does not match for the parameters</h2>
+  </div>
