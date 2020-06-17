@@ -1,14 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-
-
-
 @Component({
-  selector: 'app-svgcircle',
-  templateUrl: './svgcircle.component.html',
-  styleUrls: ['./svgcircle.component.css'],
+  selector: 'app-svgrect',
+  templateUrl: './svgrect.component.html',
+  styleUrls: ['./svgrect.component.css'],
 })
-export class SvgcircleComponent implements OnInit {
+export class SvgrectComponent implements OnInit {
   @Input()
   coordinates: any;
   constructor() {}
