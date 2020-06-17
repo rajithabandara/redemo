@@ -18,15 +18,18 @@ import { SvgelipseComponent } from './components/svgelipse/svgelipse.component';
     ReportEngineComponent,
     SvgcircleComponent,
     PlainSvgComponent,
+    SvgrectComponent,
+    SvgelipseComponent
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
-    SvgrectComponent,
-    SvgelipseComponent
+
+
   ],
   bootstrap: [AppComponent]
 })
