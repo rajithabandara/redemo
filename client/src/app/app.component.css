@@ -1,22 +1,18 @@
 .navicon {
-    height: 20px;
-    width: 20px;
-    padding: 2px;
-    color: aliceblue;
-    /* background-color: aliceblue; */
-    fill: aliceblue;
-  }
-
-
-  div.ex1 {
-  width:1500px;
-  margin: auto;
-
+  height: 20px;
+  width: 20px;
+  padding: 2px;
+  color: rgb(83, 170, 247);
+  /* background-color: aliceblue; */
+  fill: aliceblue;
 }
 
-
-
+div.ex1 {
+  width: 1500px;
+  margin: auto;
+}
 
 body {
-  background-color: rgba(212, 238, 245, 0.301);
+  height: 94vh;
+  background-color: rgba(0, 194, 248, 0.301);
 }
