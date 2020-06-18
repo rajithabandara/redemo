@@ -9,9 +9,9 @@ import { HttpdataService } from '../../services/httpdata.service';
   styleUrls: ['./report-engine.component.css'],
 })
 export class ReportEngineComponent {
-  public rectcoordinates = [];
-  public circoordinates = [];
-  public ellipsecoordinates = [];
+  public rectCoordinates = [];
+  public cirCoordinates = [];
+  public ellipseCoordinates = [];
   timer = null;
 
   param: any;
@@ -23,16 +23,16 @@ export class ReportEngineComponent {
       switch (this.param) {
         case 'rectangles':
           clearInterval(this.timer);
-          httpdata.getservertime().subscribe((data) => {
+          httpdata.getServerTime().subscribe((data) => {
             console.log(data);
 
-            this.rectcoordinates = [];
+            this.rectCoordinates = [];
 
             for (let i = 0; i < data.timeinseconds; i++) {
               let x = (Math.random() * 5000) % 500;
               let y = (Math.random() * 5000) % 500;
 
-              this.rectcoordinates.push({
+              this.rectCoordinates.push({
                 x: x,
                 y: y,
               });
@@ -43,14 +43,14 @@ export class ReportEngineComponent {
 
         case 'circles':
           clearInterval(this.timer);
-          httpdata.getrandomint().subscribe((data) => {
+          httpdata.getRandomInt().subscribe((data) => {
             console.log(data);
-            this.circoordinates = [];
+            this.cirCoordinates = [];
             for (let i = 0; i < data.randomint; i++) {
               let x = (Math.random() * 5000) % 500;
               let y = (Math.random() * 5000) % 500;
 
-              this.circoordinates.push({
+              this.cirCoordinates.push({
                 x: x,
                 y: y,
               });
@@ -61,12 +61,12 @@ export class ReportEngineComponent {
         case 'ellipse':
           var sec = Math.round(new Date().getSeconds() / 10);
           console.log(sec);
-          this.ellipsecoordinates = [];
+          this.ellipseCoordinates = [];
           for (let i = 0; i < sec; i++) {
             let x = (Math.random() * 5000) % 500;
             let y = (Math.random() * 5000) % 500;
 
-            this.ellipsecoordinates.push({
+            this.ellipseCoordinates.push({
               x: x,
               y: y,
             });
@@ -75,12 +75,12 @@ export class ReportEngineComponent {
           this.timer = setInterval(() => {
             var sec = Math.round(new Date().getSeconds() / 10);
             console.log(sec);
-            this.ellipsecoordinates = [];
+            this.ellipseCoordinates = [];
             for (let i = 0; i < sec; i++) {
               let x = (Math.random() * 5000) % 500;
               let y = (Math.random() * 5000) % 500;
 
-              this.ellipsecoordinates.push({
+              this.ellipseCoordinates.push({
                 x: x,
                 y: y,
               });

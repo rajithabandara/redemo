@@ -8,11 +8,11 @@ import { HttpClient } from '@angular/common/http';
 export class HttpdataService {
   constructor(private http: HttpClient) {}
 
-  getrandomint() {
+  getRandomInt() {
     return this.http.get<any>('http://localhost:5000/randomint');
   }
 
-  getservertime() {
+  getServerTime() {
     return this.http.get<any>('http://localhost:5000/timeinseconds');
   }
 }

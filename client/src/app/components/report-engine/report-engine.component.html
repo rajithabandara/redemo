@@ -6,15 +6,15 @@
     </div>
     <div *ngSwitchCase="'rectangles'">
       <h2>Rectangles</h2>
-      <app-svgrect [coordinates]="rectcoordinates"></app-svgrect>
+      <app-svgrect [coordinates]="rectCoordinates"></app-svgrect>
     </div>
     <div *ngSwitchCase="'ellipse'">
       <h2>Ellipse</h2>
-      <app-svgelipse [coordinates]="ellipsecoordinates"></app-svgelipse>
+      <app-svgelipse [coordinates]="ellipseCoordinates"></app-svgelipse>
     </div>
     <div *ngSwitchCase="'circles'">
       <h2>circles</h2>
-      <app-svgcircle [coordinates]="circoordinates"></app-svgcircle>
+      <app-svgcircle [coordinates]="cirCoordinates"></app-svgcircle>
     </div>
     <div *ngSwitchDefault>
       <h2>Does not match for the parameters</h2>
