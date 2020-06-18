@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpdataService } from '../httpdata.service';
-// import { clearInterval } from 'timers';
+import { HttpdataService } from '../../services/httpdata.service';
+
 
 @Component({
   selector: 'app-report-engine',
@@ -95,5 +95,5 @@ export class ReportEngineComponent {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }

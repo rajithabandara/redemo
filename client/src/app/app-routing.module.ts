@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ReportEngineComponent } from './report-engine/report-engine.component';
+import { ReportEngineComponent } from './components/report-engine/report-engine.component';
+
 
 
 const routes: Routes = [

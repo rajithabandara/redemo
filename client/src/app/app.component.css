@@ -11,6 +11,12 @@
   div.ex1 {
   width:1500px;
   margin: auto;
- 
+
 }
-  
+
+
+
+
+body {
+  background-color: rgba(212, 238, 245, 0.301);
+}
