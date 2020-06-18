@@ -9,6 +9,8 @@ import { HttpdataService } from '../httpdata.service';
 })
 export class ReportEngineComponent implements OnInit {
   public rectcoordinates = [];
+  public circoordinates = [];
+
 
   qparam: any;
   constructor(router: ActivatedRoute, httpdata: HttpdataService) {
@@ -32,9 +34,25 @@ export class ReportEngineComponent implements OnInit {
                 y: y,
               });
             }
+
           });
 
           break;
+          case 'circle':
+            httpdata.getrandomint().subscribe((data)=>{
+              console.log(data);
+              this.circoordinates =[];
+              for (let i = 0; i < data.randomint ; i++) {
+                let x = (Math.random() * 5000) % 500;
+                let y = (Math.random() * 5000) % 500;
+
+                this.circoordinates.push({
+                  x: x,
+                  y: y,
+                });
+              }
+            });
+            break;
 
         default:
           break;

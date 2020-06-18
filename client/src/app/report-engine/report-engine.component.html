@@ -1,13 +1,8 @@
-
-
 <div class="container">
   <div [ngSwitch]="qparam">
     <div *ngSwitchCase="'plain'">
       <h2>Plainsvg</h2>
       <app-plain-svg></app-plain-svg>
-      <!-- <div class="container">
-      <app-svgcircle [coordinates]="companies"></app-svgcircle>
-    </div> -->
     </div>
     <div *ngSwitchCase="'rect'">
       <h2>Rectangles</h2>
@@ -18,7 +13,7 @@
     </div>
     <div *ngSwitchCase="'circle'">
       <h2>circles</h2>
-      <!-- <app-svgcircle [coordinates]="companies"></app-svgcircle> -->
+      <app-svgcircle [coordinates]="circoordinates"></app-svgcircle>
     </div>
     <div *ngSwitchDefault>
       <h2>Does not match for the parameters</h2>
@@ -73,7 +68,7 @@
     <div *ngSwitchCase="'circle'">
       <h2>circles</h2>
        <app-svgcircle [coordinates]="companies"></app-svgcircle> -->
-    <!-- </div>
+<!-- </div>
     <div *ngSwitchDefault>
       <h2>Does not match for the parameters</h2>
     </div>

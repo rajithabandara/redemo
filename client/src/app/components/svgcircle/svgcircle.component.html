@@ -1,8 +1,8 @@
 <svg width="800" height="800">
   <circle
     *ngFor="let item of coordinates; let i = index"
-    [attr.cx]="i * 190"
-    [attr.cy]="i * 190"
+    [attr.cx]="item.x"
+    [attr.cy]="item.y"
     r="50"
     style="fill: yellow; stroke: purple; stroke-width: 2;"
   />
