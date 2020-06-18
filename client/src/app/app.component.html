@@ -17,8 +17,7 @@
       <li class="nav-item">
         <a
           class="nav-link"
-          [routerLink]="['reportengine']"
-          [queryParams]="{ item: 'plain' }"
+          [routerLink]="['reportengine','Plainsvg']"
           routerLinkActive="active"
         >
           <img class="navicon" src="../assets/svg.svg" />
@@ -28,8 +27,8 @@
       <li class="nav-item">
         <a
           class="nav-link"
-          [routerLink]="['reportengine']"
-          [queryParams]="{ item: 'circle' }"
+          [routerLink]="['reportengine','circles']"
+
           routerLinkActive="active"
         >
           <img class="navicon" src="../assets/circles.svg" /> Circles</a
@@ -38,8 +37,8 @@
       <li class="nav-item">
         <a
           class="nav-link"
-          [routerLink]="['reportengine']"
-          [queryParams]="{ item: 'rect' }"
+          [routerLink]="['reportengine','rectangles']"
+
           routerLinkActive="active"
         >
           <img class="navicon" src="../assets/open-menu.svg" /> Rectangles</a
@@ -48,9 +47,8 @@
       <li class="nav-item">
         <a
           class="nav-link"
-          [routerLink]="['reportengine']"
-          [queryParams]="{ item: 'ellipse' }"
-          routerLinkActive="active"
+          [routerLink]="['reportengine','ellipse']"
+                  routerLinkActive="active"
         >
           <img class="navicon" src="../assets/planet.svg" /> Ellipse</a
         >

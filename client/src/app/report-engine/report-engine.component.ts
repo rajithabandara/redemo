@@ -13,16 +13,16 @@ export class ReportEngineComponent {
   public circoordinates = [];
   public ellipsecoordinates = [];
   timer = null;
-  qparam: any;
+
+  param: any;
   constructor(router: ActivatedRoute, httpdata: HttpdataService) {
-    router.queryParamMap.subscribe((data) => {
-      this.qparam = data.get('item');
-      console.log(this.qparam);
+    router.paramMap.subscribe((data) => {
+      this.param = data.get('id');
+      console.log(this.param);
 
-      switch (this.qparam) {
-        case 'rect':
+      switch (this.param) {
+        case 'rectangles':
           clearInterval(this.timer);
-
           httpdata.getservertime().subscribe((data) => {
             console.log(data);
 
@@ -40,9 +40,9 @@ export class ReportEngineComponent {
           });
 
           break;
-        case 'circle':
-          clearInterval(this.timer);
 
+        case 'circles':
+          clearInterval(this.timer);
           httpdata.getrandomint().subscribe((data) => {
             console.log(data);
             this.circoordinates = [];

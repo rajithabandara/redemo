@@ -1,10 +1,10 @@
 <div class="container">
-  <div [ngSwitch]="qparam">
-    <div *ngSwitchCase="'plain'">
+  <div [ngSwitch]="param">
+    <div *ngSwitchCase="'Plainsvg'">
       <h2>Plainsvg</h2>
       <app-plain-svg></app-plain-svg>
     </div>
-    <div *ngSwitchCase="'rect'">
+    <div *ngSwitchCase="'rectangles'">
       <h2>Rectangles</h2>
       <app-svgrect [coordinates]="rectcoordinates"></app-svgrect>
     </div>
@@ -12,7 +12,7 @@
       <h2>Ellipse</h2>
       <app-svgelipse [coordinates]="ellipsecoordinates"></app-svgelipse>
     </div>
-    <div *ngSwitchCase="'circle'">
+    <div *ngSwitchCase="'circles'">
       <h2>circles</h2>
       <app-svgcircle [coordinates]="circoordinates"></app-svgcircle>
     </div>
