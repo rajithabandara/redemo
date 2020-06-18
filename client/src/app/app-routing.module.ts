@@ -4,7 +4,7 @@ import { ReportEngineComponent } from './report-engine/report-engine.component';
 
 
 const routes: Routes = [
-  { path: 'reportengine', component:ReportEngineComponent},
+  { path: 'reportengine/:id', component:ReportEngineComponent},
 
 ];
 

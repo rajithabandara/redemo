@@ -12,14 +12,14 @@ export class ReportEngineComponent implements OnInit {
   public circoordinates = [];
   public ellipsecoordinates = [];
 
-  qparam: any;
-  constructor(router: ActivatedRoute, httpdata: HttpdataService) {
-    router.queryParamMap.subscribe((data) => {
-      this.qparam = data.get('item');
-      console.log(this.qparam);
+  param: any;
+  constructor( router: ActivatedRoute, httpdata: HttpdataService) {
+    router.paramMap.subscribe((data) => {
+      this.param = data.get('id');
+      console.log(this.param);
 
-      switch (this.qparam) {
-        case 'rect':
+      switch (this.param) {
+        case 'rectangles':
           httpdata.getservertime().subscribe((data) => {
             console.log(data);
 
@@ -37,7 +37,7 @@ export class ReportEngineComponent implements OnInit {
           });
 
           break;
-        case 'circle':
+        case 'circles':
           httpdata.getrandomint().subscribe((data) => {
             console.log(data);
             this.circoordinates = [];
