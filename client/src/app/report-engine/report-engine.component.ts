@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpdataService } from '../httpdata.service';
+// import { clearInterval } from 'timers';
 
 @Component({
   selector: 'app-report-engine',
   templateUrl: './report-engine.component.html',
   styleUrls: ['./report-engine.component.css'],
 })
-export class ReportEngineComponent implements OnInit {
+export class ReportEngineComponent {
   public rectcoordinates = [];
   public circoordinates = [];
   public ellipsecoordinates = [];
-
+  timer = null;
   qparam: any;
   constructor(router: ActivatedRoute, httpdata: HttpdataService) {
     router.queryParamMap.subscribe((data) => {
@@ -20,6 +21,8 @@ export class ReportEngineComponent implements OnInit {
 
       switch (this.qparam) {
         case 'rect':
+          clearInterval(this.timer);
+
           httpdata.getservertime().subscribe((data) => {
             console.log(data);
 
@@ -38,6 +41,8 @@ export class ReportEngineComponent implements OnInit {
 
           break;
         case 'circle':
+          clearInterval(this.timer);
+
           httpdata.getrandomint().subscribe((data) => {
             console.log(data);
             this.circoordinates = [];
@@ -67,7 +72,7 @@ export class ReportEngineComponent implements OnInit {
             });
           }
 
-          setInterval(() => {
+          this.timer = setInterval(() => {
             var sec = Math.round(new Date().getSeconds() / 10);
             console.log(sec);
             this.ellipsecoordinates = [];
