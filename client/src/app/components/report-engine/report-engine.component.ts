@@ -15,15 +15,15 @@ export class ReportEngineComponent {
   timer = null;
 
   param: any;
-  constructor(router: ActivatedRoute, httpdata: HttpdataService) {
-    router.paramMap.subscribe((data) => {
+  constructor(private router: ActivatedRoute, private httpdata: HttpdataService) {
+    this.router.paramMap.subscribe((data) => {
       this.param = data.get('id');
       console.log(this.param);
 
       switch (this.param) {
         case 'rectangles':
           clearInterval(this.timer);
-          httpdata.getServerTime().subscribe((data) => {
+          this.httpdata.getServerTime().subscribe((data) => {
             console.log(data);
 
             this.rectCoordinates = [];
@@ -43,7 +43,7 @@ export class ReportEngineComponent {
 
         case 'circles':
           clearInterval(this.timer);
-          httpdata.getRandomInt().subscribe((data) => {
+          this.httpdata.getRandomInt().subscribe((data) => {
             console.log(data);
             this.cirCoordinates = [];
             for (let i = 0; i < data.randomint; i++) {
