@@ -1,1 +1,13 @@
-<p>svgelipse works!</p>
+<svg width="800" height="600">
+  <ellipse
+    *ngFor="let item of coordinates; let i = index"
+    [attr.cx]="item.x"
+    [attr.cy]="item.y"
+    rx="100"
+    ry="50"
+    style="fill: red; stroke: black; stroke-width: 2;"
+  ></ellipse>
+</svg>
+
+<!-- <ellipse cx="200" cy="80" rx="100" ry="50"
+  style="fill:yellow;stroke:purple;stroke-width:2" /> -->

@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-svgelipse',
   templateUrl: './svgelipse.component.html',
-  styleUrls: ['./svgelipse.component.css']
+  styleUrls: ['./svgelipse.component.css'],
 })
 export class SvgelipseComponent implements OnInit {
-
-  constructor() { }
+  @Input()
+  coordinates: any;
+  constructor() {}
 
   ngOnInit(): void {
+    console.log(this.coordinates);
   }
-
 }

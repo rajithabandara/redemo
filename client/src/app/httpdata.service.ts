@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
+
 export class HttpdataService {
   constructor(private http: HttpClient) {}
 

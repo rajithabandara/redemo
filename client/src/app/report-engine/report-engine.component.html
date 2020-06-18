@@ -10,6 +10,7 @@
     </div>
     <div *ngSwitchCase="'ellipse'">
       <h2>Ellipse</h2>
+      <app-svgelipse [coordinates]="ellipsecoordinates"></app-svgelipse>
     </div>
     <div *ngSwitchCase="'circle'">
       <h2>circles</h2>
@@ -21,9 +22,6 @@
   </div>
 </div>
 
-
-
-
 <!-- <svg width="800">
   <circle
     *ngFor="let item of companies; let i = index"
@@ -33,9 +31,6 @@
     style="fill: yellow; stroke: purple; stroke-width: 2;"
   />
 </svg> -->
-
-
-
 
 <!-- <app-svgcircle
     *ngFor="let item of companies; let i = index"
