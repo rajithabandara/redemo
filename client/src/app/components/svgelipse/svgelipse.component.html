@@ -1,16 +1,19 @@
-
 <div class="solid">
-<body>
-<svg width="800" height="600">
-  <ellipse
-    *ngFor="let item of coordinates; let i = index"
-    [attr.cx]="item.x"
-    [attr.cy]="item.y"
-    rx="100"
-    ry="50"
-    style="fill: red; stroke: black; stroke-width: 2;"
-  ></ellipse>
-</svg>
-</body>
+  <body>
+    <svg width="800" height="600" >
+      <rect
+        width="500"
+        height="500"
+        style="fill: rgb(255, 0, 0); stroke-width: 3; stroke: rgb(0, 0, 0);"
+      />
+      <ellipse
+        *ngFor="let item of coordinates; let i = index"
+        [attr.cx]="item.x"
+        [attr.cy]="item.y"
+        rx="100"
+        ry="50"
+        style="fill: red; stroke: black; stroke-width: 2;"
+      ></ellipse>
+    </svg>
+  </body>
 </div>
-
