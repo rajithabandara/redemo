@@ -5,12 +5,37 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './svgelipse.component.html',
   styleUrls: ['./svgelipse.component.css'],
 })
-export class SvgelipseComponent implements OnInit {
-  @Input()
-  coordinates: any;
-  constructor() {}
+export class SvgelipseComponent {
+  ellipseCoordinates: any;
+  timer = null;
 
-  ngOnInit(): void {
-    console.log(this.coordinates);
+  constructor() {
+    var sec = Math.round(new Date().getSeconds() / 10);
+    console.log(sec);
+    this.ellipseCoordinates = [];
+    for (let i = 0; i < sec; i++) {
+      let x = (Math.random() * 5000) % 500;
+      let y = (Math.random() * 5000) % 500;
+
+      this.ellipseCoordinates.push({
+        x: x,
+        y: y,
+      });
+    }
+
+    this.timer = setInterval(() => {
+      var sec = Math.round(new Date().getSeconds() / 10);
+      console.log(sec);
+      this.ellipseCoordinates = [];
+      for (let i = 0; i < sec; i++) {
+        let x = (Math.random() * 5000) % 500;
+        let y = (Math.random() * 5000) % 500;
+
+        this.ellipseCoordinates.push({
+          x: x,
+          y: y,
+        });
+      }
+    }, 10000);
   }
 }

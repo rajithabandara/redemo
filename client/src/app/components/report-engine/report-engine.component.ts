@@ -61,33 +61,33 @@ export class ReportEngineComponent {
       //   break;
 
       // case 'ellipse':
-      //   var sec = Math.round(new Date().getSeconds() / 10);
-      //   console.log(sec);
-      //   this.ellipseCoordinates = [];
-      //   for (let i = 0; i < sec; i++) {
-      //     let x = (Math.random() * 5000) % 500;
-      //     let y = (Math.random() * 5000) % 500;
+        // var sec = Math.round(new Date().getSeconds() / 10);
+        // console.log(sec);
+        // this.ellipseCoordinates = [];
+        // for (let i = 0; i < sec; i++) {
+        //   let x = (Math.random() * 5000) % 500;
+        //   let y = (Math.random() * 5000) % 500;
 
-      //     this.ellipseCoordinates.push({
-      //       x: x,
-      //       y: y,
-      //     });
-      //   }
+        //   this.ellipseCoordinates.push({
+        //     x: x,
+        //     y: y,
+        //   });
+        // }
 
-      //   this.timer = setInterval(() => {
-      //     var sec = Math.round(new Date().getSeconds() / 10);
-      //     console.log(sec);
-      //     this.ellipseCoordinates = [];
-      //     for (let i = 0; i < sec; i++) {
-      //       let x = (Math.random() * 5000) % 500;
-      //       let y = (Math.random() * 5000) % 500;
+        // this.timer = setInterval(() => {
+        //   var sec = Math.round(new Date().getSeconds() / 10);
+        //   console.log(sec);
+        //   this.ellipseCoordinates = [];
+        //   for (let i = 0; i < sec; i++) {
+        //     let x = (Math.random() * 5000) % 500;
+        //     let y = (Math.random() * 5000) % 500;
 
-      //       this.ellipseCoordinates.push({
-      //         x: x,
-      //         y: y,
-      //       });
-      //     }
-      //   }, 10000);
+        //     this.ellipseCoordinates.push({
+        //       x: x,
+        //       y: y,
+        //     });
+        //   }
+        // }, 10000);
 
       //   break;
 
