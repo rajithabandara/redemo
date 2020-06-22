@@ -7,28 +7,24 @@ import { AppComponent } from './app.component';
 import { SvgcircleComponent } from './components/svgcircle/svgcircle.component';
 import { PlainSvgComponent } from './components/plain-svg/plain-svg.component';
 
-
 import { SvgrectComponent } from './components/svgrect/svgrect.component';
 import { SvgelipseComponent } from './components/svgelipse/svgelipse.component';
 import { ReportEngineComponent } from './components/report-engine/report-engine.component';
 import { HttpdataService } from './services/httpdata.service';
+import { CenterdemoComponent } from './components/centerdemo/centerdemo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-  ReportEngineComponent,
+    ReportEngineComponent,
     SvgcircleComponent,
     PlainSvgComponent,
     SvgrectComponent,
-    SvgelipseComponent
-
+    SvgelipseComponent,
+    CenterdemoComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [HttpdataService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
