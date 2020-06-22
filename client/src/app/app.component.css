@@ -12,7 +12,7 @@ div.ex1 {
   margin: auto;
  }
 
-body {
+.body {
   height:94vh;
   background-color: rgba(0, 194, 248, 0.301);
   /* background-color:rgb(122, 214, 122); */
