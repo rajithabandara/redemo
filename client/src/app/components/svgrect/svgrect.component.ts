@@ -13,15 +13,15 @@ export class SvgrectComponent implements OnInit {
   timer = null;
   public rectCoordinates = [];
 
-  constructor(private httpdata: HttpdataService) { }
+  constructor(private httpData: HttpdataService) { }
 
   ngOnInit(): void {
     console.log(this.coordinates);
     this.createRect();
   }
- createRect() {
+  createRect() {
     clearInterval(this.timer);
-    this.httpdata.getServerTime().subscribe((data) => {
+    this.httpData.getServerTime().subscribe((data) => {
       console.log(data);
 
       this.rectCoordinates = [];

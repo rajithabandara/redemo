@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpdataService } from '../../services/httpdata.service';
+
 
 
 
@@ -16,7 +16,7 @@ export class ReportEngineComponent {
   timer = null;
 
   param: any;
-  constructor(private router: ActivatedRoute, private httpdata: HttpdataService ) {
+  constructor(private router: ActivatedRoute) {
     this.router.paramMap.subscribe((data) => {
       this.param = data.get('id');
       console.log(this.param);
