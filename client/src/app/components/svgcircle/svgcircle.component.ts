@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpdataService } from 'src/app/services/httpdata.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { HttpdataService } from 'src/app/services/httpdata.service';
   templateUrl: './svgcircle.component.html',
   styleUrls: ['./svgcircle.component.css'],
 })
-export class SvgcircleComponent implements OnInit {
+export class SvgcircleComponent {
   public cirCoordinates = [];
 
   constructor(private httpData: HttpdataService) {
@@ -23,9 +23,5 @@ export class SvgcircleComponent implements OnInit {
         });
       }
     });
-  }
-
-  ngOnInit(): void {
-    // console.log(this.coordinates);
   }
 }

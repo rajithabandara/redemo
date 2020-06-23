@@ -1,26 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpdataService } from 'src/app/services/httpdata.service';
-
 
 @Component({
   selector: 'app-svgrect',
   templateUrl: './svgrect.component.html',
   styleUrls: ['./svgrect.component.css'],
 })
-export class SvgrectComponent implements OnInit {
-  @Input()
-  coordinates: any;
-  timer = null;
+export class SvgrectComponent {
   public rectCoordinates = [];
 
-  constructor(private httpData: HttpdataService) { }
-
-  ngOnInit(): void {
-    console.log(this.coordinates);
-    this.createRect();
-  }
-  createRect() {
-    clearInterval(this.timer);
+  constructor(private httpData: HttpdataService) {
     this.httpData.getServerTime().subscribe((data) => {
       console.log(data);
 
@@ -37,6 +26,4 @@ export class SvgrectComponent implements OnInit {
       }
     });
   }
-
-
 }
