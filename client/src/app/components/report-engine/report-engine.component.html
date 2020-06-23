@@ -1,5 +1,10 @@
 <div class="container">
   <div [ngSwitch]="param">
+    <div *ngSwitchCase="'dynamic'">
+      <h2>{{ param }}</h2>
+      <app-centerdemo></app-centerdemo>
+    </div>
+
     <div *ngSwitchDefault>
       <h2>Does not match for the parameters</h2>
     </div>
