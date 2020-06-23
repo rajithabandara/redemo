@@ -1,5 +1,3 @@
-
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Report Engine</a>
   <button
@@ -15,56 +13,16 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          [routerLink]="['reportengine','Plainsvg']"
-          routerLinkActive="active"
-        >
-          <img class="navicon" src="../assets/svg.svg" />
-          Plain SVG</a
-        >
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          [routerLink]="['reportengine','circles']"
-
-          routerLinkActive="active"
-        >
-          <img class="navicon" src="../assets/circles.svg" /> Circles</a
-        >
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          [routerLink]="['reportengine','rectangles']"
-
-          routerLinkActive="active"
-        >
-          <img class="navicon" src="../assets/open-menu.svg" /> Rectangles</a
-        >
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          [routerLink]="['reportengine','ellipse']"
-                  routerLinkActive="active"
-        >
-          <img class="navicon" src="../assets/planet.svg" /> Ellipse</a
-        >
-      </li>
-    </ul>
+    <ul class="navbar-nav mr-auto"></ul>
     <ul class="navbar-nav"></ul>
   </div>
 </nav>
 
-<div class= "body" >
+<div class="body">
   <div class="ex1">
-    <img src="../assets/add.svg" /><br /><br >
-    <img src="../assets/minus.svg" /><br><br>
+    <img src="../assets/add.svg" /><br /><br />
+    <img src="../assets/minus.svg" /><br /><br />
     <img src="../assets/correct.svg" />
-    </div>
-<router-outlet></router-outlet>
+  </div>
+  <router-outlet></router-outlet>
 </div>
