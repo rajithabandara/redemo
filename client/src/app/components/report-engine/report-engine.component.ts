@@ -10,13 +10,14 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./report-engine.component.css'],
 })
 export class ReportEngineComponent {
+
   public rectCoordinates = [];
   public cirCoordinates = [];
   public ellipseCoordinates = [];
   timer = null;
-
   param: any;
-  constructor(private router: ActivatedRoute) {
+
+  constructor(private router: ActivatedRoute ) {
     this.router.paramMap.subscribe((data) => {
       this.param = data.get('id');
       console.log(this.param);

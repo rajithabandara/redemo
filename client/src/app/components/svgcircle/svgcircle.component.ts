@@ -7,7 +7,6 @@ import { HttpdataService } from 'src/app/services/httpdata.service';
   styleUrls: ['./svgcircle.component.css'],
 })
 export class SvgcircleComponent implements OnInit {
-
   public cirCoordinates = [];
 
   constructor(private httpData: HttpdataService) {
