@@ -1,0 +1,27 @@
+
+<button (click)="center()">Center</button>
+<div class="solid">
+  <div class="border">
+    <!-- <svg width="100px" height="100px">
+      <circle
+
+        [attr.cx]="x"
+        [attr.cy]="y"
+
+        r="50"
+        style="fill: yellow; stroke: purple; stroke-width: 2;"
+      />
+    </svg> -->
+    <svg width="400" height="800" viewBox="0 0 400 800">
+      <g transform="translate(200,0)">
+      <rect
+      [attr.x]="x"
+        [attr.y]="y"
+        width="200"
+        height="700"
+      style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
+      </g>
+    </svg>
+  </div>
+
+</div>

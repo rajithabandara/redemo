@@ -4,7 +4,10 @@
       <h2>{{ param }}</h2>
       <app-centerdemo></app-centerdemo>
     </div>
-
+    <div *ngSwitchCase="'staticCir'">
+      <h2>{{ param }}</h2>
+      <app-static-circle></app-static-circle>
+    </div>
     <div *ngSwitchDefault>
       <h2>Does not match for the parameters</h2>
     </div>

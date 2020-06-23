@@ -9,8 +9,11 @@ import { ReportEngineComponent } from './components/report-engine/report-engine.
 import { HttpdataService } from './services/httpdata.service';
 import { CenterdemoComponent } from './components/centerdemo/centerdemo.component';
 
+import { StaticCircleComponent } from './components/static-circle/static-circle.component';
+import { StaticRectangleComponent } from './components/static-rectangle/static-rectangle.component';
+
 @NgModule({
-  declarations: [AppComponent, ReportEngineComponent, CenterdemoComponent],
+  declarations: [AppComponent, ReportEngineComponent, CenterdemoComponent, StaticCircleComponent, StaticRectangleComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [HttpdataService],
   bootstrap: [AppComponent],
