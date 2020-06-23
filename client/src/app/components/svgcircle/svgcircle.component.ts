@@ -7,11 +7,10 @@ import { HttpdataService } from 'src/app/services/httpdata.service';
   styleUrls: ['./svgcircle.component.css'],
 })
 export class SvgcircleComponent implements OnInit {
- 
   public cirCoordinates = [];
 
-  constructor(private httpdata: HttpdataService) {
-    this.httpdata.getRandomInt().subscribe((data) => {
+  constructor(private httpData: HttpdataService) {
+    this.httpData.getRandomInt().subscribe((data) => {
       console.log(data);
       this.cirCoordinates = [];
       for (let i = 0; i < data.randomint; i++) {

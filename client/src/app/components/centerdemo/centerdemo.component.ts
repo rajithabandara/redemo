@@ -6,12 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./centerdemo.component.css'],
 })
 export class CenterdemoComponent implements OnInit {
-  x: number;
-  y: number;
+  x: string;
+  y: string;
 
   constructor() {
-    this.x = Math.round((Math.random() * 5000) % 500);
-    this.y = Math.round((Math.random() * 5000) % 500);
+    this.x = String(Math.round((Math.random() * 5000) % 500));
+    this.y = String(Math.round((Math.random() * 5000) % 500));
   }
 
   ngOnInit(): void {
@@ -19,8 +19,8 @@ export class CenterdemoComponent implements OnInit {
   }
 
   center() {
-    this.x = 400;
-    this.y = 300;
+    // this.x = 400;
+    // this.y = 300;
 
     console.log('center - ', this.x, ' ', this.y);
   }
