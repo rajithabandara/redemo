@@ -1,0 +1,16 @@
+<div class="container">
+  <!-- <button (click)="center()">center</button> -->
+
+  <svg viewBox="0 0 4000 4000" class="solid">
+    <g transform="translate(2500,2500)">
+      <rect
+        *ngFor="let item of coordinates"
+        [attr.x]="item.x"
+        [attr.y]="item.y"
+        height="200"
+        width="250"
+        style="fill: yellow; stroke: purple; stroke-width: 2;"
+      />
+    </g>
+  </svg>
+</div>
