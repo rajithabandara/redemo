@@ -5,7 +5,7 @@ import { CenterdemoComponent } from './components/centerdemo/centerdemo.componen
 
 const routes: Routes = [
   { path: 'reportengine/:id', component: ReportEngineComponent },
-  { path: 'centerdemo', component: CenterdemoComponent },
+  // { path: 'centerdemo', component: CenterdemoComponent },
 ];
 
 @NgModule({
