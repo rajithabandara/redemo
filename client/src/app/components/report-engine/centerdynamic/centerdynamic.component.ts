@@ -34,11 +34,11 @@ export class CenterdynamicComponent {
 
     console.log(reportDimesion);
 
-    // this.reportHeight = reportDimesion.reportHeight;
-    // this.reportWidth = reportDimesion.reportWidth;
+    this.reportHeight = reportDimesion.reportHeight;
+    this.reportWidth = reportDimesion.reportWidth;
 
-    this.reportHeight = 4000;
-    this.reportWidth = 4000;
+    // this.reportHeight = 4000;
+    // this.reportWidth = 4000;
 
     // console.log(this.reportWidth, this.reportHeight);
 
