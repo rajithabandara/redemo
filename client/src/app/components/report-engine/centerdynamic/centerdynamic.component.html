@@ -1,29 +1,39 @@
 <div class="container">
-    <button (click)="center()">center</button>
+  <button (click)="center()">center</button>
 
-    <svg id="mainsvg" width="600" height="600" [attr.viewBox]="viewboxstr" class="solid">
-      <circle [attr.cx]="viwportw / 2" [attr.cy]="viwporth / 2" r="10"></circle>
+  <svg
+    id="mainsvg"
+    width="600"
+    height="600"
+    [attr.viewBox]="viewBoxAttribute"
+    class="solid"
+  >
+    <circle
+      [attr.cx]="reportWidth / 2"
+      [attr.cy]="reportHeight / 2"
+      r="10"
+    ></circle>
 
-      <g id="groptsvg" *ngIf="toggle" [attr.transform]="atrstr">
-        <rect
-          *ngFor="let item of coordinates"
-          [attr.x]="item.x"
-          [attr.y]="item.y"
-          height="200"
-          width="200"
-          style="fill: yellow; stroke: purple; stroke-width: 2;"
-        />
-      </g>
+    <g id="groptsvg" [attr.transform]="translateAttribute">
+      <rect
+        *ngFor="let item of coordinates"
+        [attr.x]="item.x"
+        [attr.y]="item.y"
+        height="200"
+        width="200"
+        style="fill: yellow; stroke: purple; stroke-width: 2;"
+      />
+    </g>
 
-      <g *ngIf="!toggle">
-        <rect
-          *ngFor="let item of coordinates"
-          [attr.x]="item.x"
-          [attr.y]="item.y"
-          height="200"
-          width="200"
-          style="fill: yellow; stroke: purple; stroke-width: 2;"
-        />
-      </g>
-    </svg>
-  </div>
+    <!-- <g *ngIf="!toggle">
+      <rect
+        *ngFor="let item of coordinates"
+        [attr.x]="item.x"
+        [attr.y]="item.y"
+        height="200"
+        width="200"
+        style="fill: yellow; stroke: purple; stroke-width: 2;"
+      />
+    </g> -->
+  </svg>
+</div>
