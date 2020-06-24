@@ -11,7 +11,7 @@ export class CenterdynamicComponent {
 
   toggle: boolean = false;
 
-  atrstr = ``;
+  translateAttribute = ``;
 
   viewBoxAttribute = ``;
 
@@ -25,8 +25,8 @@ export class CenterdynamicComponent {
     this.calculateService = calculateService;
     for (let i = 0; i < 20; i++) {
       this.coordinates.push({
-        x: Math.round((Math.random() * 5000) % 4000),
-        y: Math.round((Math.random() * 5000) % 4000),
+        x: Math.round((Math.random() * 5000) % 1000),
+        y: Math.round((Math.random() * 5000) % 1000),
       });
     }
 
@@ -34,11 +34,11 @@ export class CenterdynamicComponent {
 
     console.log(reportDimesion);
 
-    this.reportHeight = reportDimesion.reportHeight;
-    this.reportWidth = reportDimesion.reportWidth;
+    // this.reportHeight = reportDimesion.reportHeight;
+    // this.reportWidth = reportDimesion.reportWidth;
 
-    // this.reportHeight = 4000;
-    // this.reportWidth = 4000;
+    this.reportHeight = 4000;
+    this.reportWidth = 4000;
 
     // console.log(this.reportWidth, this.reportHeight);
 
@@ -48,18 +48,19 @@ export class CenterdynamicComponent {
   }
 
   center() {
-    this.toggle = !this.toggle;
-
     console.log(this.toggle, ' toggled !');
 
     if (!this.toggle) {
       let grouppElement: any = document.querySelector('#groptsvg');
 
-      this.atrstr = this.calculateService.calculateCenter(
+      this.translateAttribute = this.calculateService.calculateCenter(
         grouppElement.getBBox(),
         this.reportWidth,
         this.reportHeight
       );
+    } else {
+      this.translateAttribute = `translate( 0 , 0 )`;
     }
+    this.toggle = !this.toggle;
   }
 }
