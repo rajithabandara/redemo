@@ -2,17 +2,31 @@
 <button (click)="center()">Center</button>
 
 
-<svg width="300" height="800"  class="solid"
-viewBox="0 0 600 1600">
-    <!-- <g transform="translate(200,0)"> -->
+
+
+
+<svg width="500" height="1000" *ngIf="!toggle"   class="solid"  >
+  <g id="groptsvg" *ngIf="toggle" [attr.viewBox]="viewboxstr">
     <rect
     [attr.x]="x"
       [attr.y]="y"
       width="200"
       height="700"
     style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
-    <!-- </g> -->
+  </g>
+
+  <g *ngIf="!toggle">
+      <rect
+      [attr.x]="x"
+        [attr.y]="y"
+        width="200"
+        height="700"
+      style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
+      </g>
   </svg>
 
 
 
+
+
+  <!-- viewBox="0 0 600 1600" -->

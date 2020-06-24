@@ -6,19 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./static-circle.component.css']
 })
 export class StaticCircleComponent  {
+  toggle: boolean = false;
   x: number;
   y: number;
-  a:number;
-  b:number;
 
+  viewboxstr = ``;
   constructor() {
-    // let x = (Math.random() * 5000) % 500;
-    // let y = (Math.random() * 5000) % 500;
+
   }
   center(){
-    this.x = 150;
-     this.y = 400;
-     this.a = 1200;
-     this.b = 3200;
+    this.toggle = !this.toggle;
+    console.log(this.toggle, ' toggled !');
+    this.x = 250;
+     this.y = 500;
+
+     this.viewboxstr=`0 0 1000 2000` ;
   }
 }
