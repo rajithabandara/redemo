@@ -1,20 +1,13 @@
-
 <button (click)="center()">Center</button>
 
-
-
-    <svg width="3000" height="1600" viewBox="0 0 6000 3200"class="solid" >
-
-      <rect
+<svg width="1000" height="1000" viewBox="0 0 3000 3000" class="solid">
+  <g [attr.transform]="translateArrt">
+    <rect
       [attr.x]="x"
-        [attr.y]="y"
-        width="2000"
-        height="1500"
-      style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
-
-    </svg>
-
-
-
-
-
+      [attr.y]="y"
+      width="2000"
+      height="1500"
+      style="fill: rgb(0, 0, 255); stroke-width: 3; stroke: rgb(0, 0, 0);"
+    />
+  </g>
+</svg>
