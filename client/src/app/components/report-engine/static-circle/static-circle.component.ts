@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-static-circle',
@@ -7,16 +6,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./static-circle.component.css']
 })
 export class StaticCircleComponent  {
-  // public cirCoordinates = [];
   x: number;
   y: number;
+  a:number;
+  b:number;
 
   constructor() {
-    let x = (Math.random() * 5000) % 500;
-    let y = (Math.random() * 5000) % 500;
+    // let x = (Math.random() * 5000) % 500;
+    // let y = (Math.random() * 5000) % 500;
   }
   center(){
-    this.x = 200;
+    this.x = 150;
      this.y = 400;
+     this.a = 1200;
+     this.b = 3200;
   }
 }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-centerdyanamic',
-  templateUrl: './centerdyanamic.component.html',
-  styleUrls: ['./centerdyanamic.component.css'],
+  selector: 'app-centerdynamic',
+  templateUrl: './centerdynamic.component.html',
+  styleUrls: ['./centerdynamic.component.css']
 })
 export class CenterdynamicComponent {
   coordinates = [];

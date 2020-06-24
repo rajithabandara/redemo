@@ -7,13 +7,13 @@ import { AppComponent } from './app.component';
 
 import { ReportEngineComponent } from './components/report-engine/report-engine.component';
 import { HttpdataService } from './services/httpdata.service';
-import { CenterdynamicComponent } from './components/centerdyanamic/centerdyanamic.component';
-
-import { StaticCircleComponent } from './components/static-circle/static-circle.component';
-import { StaticRectangleComponent } from './components/static-rectangle/static-rectangle.component';
+import { StaticCircleComponent } from './components/report-engine/static-circle/static-circle.component';
+import { StaticRectangleComponent } from './components/report-engine/static-rectangle/static-rectangle.component';
+import { CenterdynamicComponent } from './components/report-engine/centerdynamic/centerdynamic.component';
+import { StaticEllipseComponent } from './components/report-engine/static-ellipse/static-ellipse.component';
 
 @NgModule({
-  declarations: [AppComponent, ReportEngineComponent, CenterdynamicComponent,StaticCircleComponent ,StaticRectangleComponent],
+  declarations: [AppComponent, ReportEngineComponent,StaticCircleComponent,StaticRectangleComponent,CenterdynamicComponent, StaticEllipseComponent ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [HttpdataService],
   bootstrap: [AppComponent],

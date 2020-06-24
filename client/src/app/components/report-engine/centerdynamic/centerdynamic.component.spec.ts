@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CenterdynamicComponent } from './centerdyanamic.component';
+import { CenterdynamicComponent } from './centerdynamic.component';
 
 describe('CenterdynamicComponent', () => {
   let component: CenterdynamicComponent;
@@ -8,8 +8,9 @@ describe('CenterdynamicComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CenterdynamicComponent],
-    }).compileComponents();
+      declarations: [ CenterdynamicComponent ]
+    })
+    .compileComponents();
   }));
 
   beforeEach(() => {
