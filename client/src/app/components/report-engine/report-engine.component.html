@@ -1,20 +1,55 @@
-<div class="container">
-  <div [ngSwitch]="param">
-    <div *ngSwitchCase="'dynamic'">
-      <h2>{{ param }}</h2>
-      <app-centerdynamic></app-centerdynamic>
+<div class="maindiv">
+  <a> <img class="fltbtns" src="../assets/add.svg" /></a>
+  <a> <img class="fltbtns1" src="../assets/minus.svg" /></a>
+  <a> <img class="fltbtns2" src="../assets/correct.svg" /></a>
+
+  <!-- 
+  <div class="row h-100 align-items-center">
+    <div class="col-6 mx-auto">
+      <div class="jumbotron">
+        I'm vertically centered
+      </div>
     </div>
-    <div *ngSwitchCase="'staticCir'">
-      <h2>{{ param }}</h2>
-      <app-static-circle></app-static-circle>
+  </div> -->
+
+  <div class="row h-100 align-items-center" [ngSwitch]="param">
+    <div class="col-11 mx-auto" *ngSwitchCase="'dynamic'">
+      <svg class="svgfull" xmlns="http://www.w3.org/2000/svg">
+        <rect
+          x="200"
+          y="100"
+          width="500"
+          height="500"
+          style="fill: rgb(0, 0, 255); stroke-width: 3; stroke: rgb(0, 0, 0);"
+        />
+      </svg>
     </div>
-    <div *ngSwitchCase="'staticRec'">
-      <h2>{{ param }}</h2>
-      <app-static-rectangle></app-static-rectangle>
+    <div class="col-6 mx-auto" *ngSwitchCase="'staticCir'">
+      <svg xmlns="http://www.w3.org/2000/svg" width="200" height="700">
+        <rect
+          width="200"
+          height="700"
+          style="fill: rgb(0, 0, 255); stroke-width: 3; stroke: rgb(0, 0, 0);"
+        />
+      </svg>
     </div>
-    <div *ngSwitchCase="'staticEllipse'">
-      <h2>{{ param }}</h2>
-      <app-static-ellipse></app-static-ellipse>
+    <div class="col-6 mx-auto" *ngSwitchCase="'staticRec'">
+      <svg xmlns="http://www.w3.org/2000/svg" width="2000" height="1500">
+        <rect
+          width="2000"
+          height="1500"
+          style="fill: rgb(0, 0, 255); stroke-width: 3; stroke: rgb(0, 0, 0);"
+        />
+      </svg>
+    </div>
+    <div class="col-6 mx-auto" *ngSwitchCase="'staticEllipse'">
+      <svg xmlns="http://www.w3.org/2000/svg" width="200" height="00">
+        <rect
+          width="200"
+          height="700"
+          style="fill: rgb(0, 0, 255); stroke-width: 3; stroke: rgb(0, 0, 0);"
+        />
+      </svg>
     </div>
     <div *ngSwitchDefault>
       <h2>Does not match for the parameters</h2>

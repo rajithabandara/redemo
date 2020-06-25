@@ -7,13 +7,9 @@ import { AppComponent } from './app.component';
 
 import { ReportEngineComponent } from './components/report-engine/report-engine.component';
 import { HttpdataService } from './services/httpdata.service';
-import { StaticCircleComponent } from './components/report-engine/static-circle/static-circle.component';
-import { StaticRectangleComponent } from './components/report-engine/static-rectangle/static-rectangle.component';
-import { CenterdynamicComponent } from './components/report-engine/centerdynamic/centerdynamic.component';
-import { StaticEllipseComponent } from './components/report-engine/static-ellipse/static-ellipse.component';
 
 @NgModule({
-  declarations: [AppComponent, ReportEngineComponent,StaticCircleComponent,StaticRectangleComponent,CenterdynamicComponent, StaticEllipseComponent ],
+  declarations: [AppComponent, ReportEngineComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [HttpdataService],
   bootstrap: [AppComponent],

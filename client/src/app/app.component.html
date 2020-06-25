@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbarre navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Report Engine</a>
   <button
     class="navbar-toggler"
@@ -57,28 +57,32 @@
           [routerLink]="['reportengine', 'dynamic']"
           routerLinkActive="active"
         >
-          <img class="navicon" src="../assets/planet.svg" /> Dynamic report</a>
+          <img class="navicon" src="../assets/planet.svg" /> Dynamic report</a
+        >
       </li>
       <li class="nav-item">
         <a
           class="nav-link"
           [routerLink]="['reportengine', 'staticCir']"
           routerLinkActive="active"
-        >Static circles</a>
+          >Static circles</a
+        >
       </li>
       <li class="nav-item">
         <a
           class="nav-link"
           [routerLink]="['reportengine', 'staticRec']"
           routerLinkActive="active"
-        >Static Rectangles</a>
+          >Static Rectangles</a
+        >
       </li>
       <li class="nav-item">
         <a
           class="nav-link"
           [routerLink]="['reportengine', 'staticEllipse']"
           routerLinkActive="active"
-        >Static Ellipse</a>
+          >Static Ellipse</a
+        >
       </li>
     </ul>
     <ul class="navbar-nav"></ul>
@@ -86,10 +90,5 @@
 </nav>
 
 <div class="body">
-  <div class="ex1">
-    <img src="../assets/add.svg" /><br /><br />
-    <img src="../assets/minus.svg" /><br /><br />
-    <img src="../assets/correct.svg" />
-  </div>
   <router-outlet></router-outlet>
 </div>

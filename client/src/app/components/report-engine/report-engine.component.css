@@ -1,0 +1,68 @@
+.maindiv {
+  height: 92vh !important;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  width: 99vw !important;
+}
+
+.fltbtns {
+  display: block;
+
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  /* bottom: 40px; */
+  /* right: 40px; */
+  background-color: #0c9;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999;
+  margin-top: 10px;
+  /* vertical-align: none !important; */
+}
+.fltbtns1 {
+  display: block;
+
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  top: 110px;
+  /* bottom: 40px; */
+  /* right: 40px; */
+  background-color: #0c9;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999;
+  margin-top: 10px;
+  /* vertical-align: none !important; */
+}
+
+.fltbtns2 {
+  display: block;
+
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  top: 140px;
+  /* bottom: 40px; */
+  /* right: 40px; */
+  background-color: #0c9;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999;
+  margin-top: 10px;
+  /* vertical-align: none !important; */
+}
+
+.pathhead {
+  text-align: center;
+}
+
+.svgfull {
+  height: 95vh;
+  width: 95vh;
+}
