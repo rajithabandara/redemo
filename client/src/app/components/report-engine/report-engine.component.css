@@ -3,7 +3,7 @@
   text-align: center;
   align-items: center;
   align-content: center;
-  width: 99vw !important;
+  width: 100vw !important;
 }
 
 .fltbtns {
@@ -12,6 +12,7 @@
   position: fixed;
   width: 20px;
   height: 20px;
+  left: 20px;
   /* bottom: 40px; */
   /* right: 40px; */
   background-color: #0c9;
@@ -24,7 +25,7 @@
 }
 .fltbtns1 {
   display: block;
-
+  left: 20px;
   position: fixed;
   width: 20px;
   height: 20px;
@@ -42,7 +43,7 @@
 
 .fltbtns2 {
   display: block;
-
+  left: 20px;
   position: fixed;
   width: 20px;
   height: 20px;
@@ -63,6 +64,9 @@
 }
 
 .svgfull {
-  height: 95vh;
-  width: 95vh;
+  /* height: 100% !important;
+  width: 100% !important; */
+
+  height: 91.39999vh;
+  width: 100vw;
 }

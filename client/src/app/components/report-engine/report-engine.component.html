@@ -12,8 +12,8 @@
     </div>
   </div> -->
 
-  <div class="row h-100 align-items-center" [ngSwitch]="param">
-    <div class="col-11 mx-auto" *ngSwitchCase="'dynamic'">
+  <div [ngSwitch]="param">
+    <div *ngSwitchCase="'dynamic'">
       <svg class="svgfull" xmlns="http://www.w3.org/2000/svg">
         <rect
           x="200"
