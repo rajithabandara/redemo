@@ -22,7 +22,19 @@ export class CalcService {
     return { reportHeight, reportWidth };
   }
 
-  calculateCenter( boundryBox: any, reportWidth: number, reportHeight: number): string {
+  calculateReportSizeWithBBox(svgArea: any) {
+    let boundryBox = svgArea.getBoundingClientRect();
+
+    let reportHeight = boundryBox.height;
+    let reportWidth = boundryBox.width;
+    return { reportHeight, reportWidth };
+  }
+
+  calculateCenter(
+    boundryBox: any,
+    reportWidth: number,
+    reportHeight: number
+  ): string {
     console.log(boundryBox);
 
     let centerX = boundryBox.width / 2 + boundryBox.x;
@@ -36,3 +48,20 @@ export class CalcService {
     return `translate(${differanceX},${differanceY})`;
   }
 }
+
+
+// console.log(grouparea.getBBox());
+
+// let a =
+//   this.reportWidth / 2 -
+//   grouparea.getBBox().width / 2 -
+//   grouparea.getBBox().x;
+
+// let b =
+//   this.reportHeight / 2 -
+//   grouparea.getBBox().height / 2 -
+//   grouparea.getBBox().y;
+
+// console.log(a);
+
+// this.translateAttribute = `translate( ${a} , ${b} )`;

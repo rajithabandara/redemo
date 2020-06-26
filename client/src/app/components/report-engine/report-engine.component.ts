@@ -37,12 +37,17 @@ export class ReportEngineComponent {
 
       let bbox = svgarea.getBoundingClientRect();
 
+      let {
+        reportHeight,
+        reportWidth,
+      } = this.calculateService.calculateReportSizeWithBBox(svgarea);
+
       // let rectbbox = svgarea.getBBox();
 
       // let midx = bbox.width / 2;
 
-      this.reportHeight = bbox.height;
-      this.reportWidth = bbox.width;
+      this.reportHeight = reportHeight;
+      this.reportWidth = reportWidth;
 
       console.log(grouparea.getBBox());
 
@@ -51,19 +56,25 @@ export class ReportEngineComponent {
 
       // console.log(rectbbox.height, rectbbox.width);
 
-      let a =
-        this.reportWidth / 2 -
-        grouparea.getBBox().width / 2 -
-        grouparea.getBBox().x;
+      // let a =
+      //   this.reportWidth / 2 -
+      //   grouparea.getBBox().width / 2 -
+      //   grouparea.getBBox().x;
 
-      let b =
-        this.reportHeight / 2 -
-        grouparea.getBBox().height / 2 -
-        grouparea.getBBox().y;
+      // let b =
+      //   this.reportHeight / 2 -
+      //   grouparea.getBBox().height / 2 -
+      //   grouparea.getBBox().y;
 
-      console.log(a);
+      // console.log(a);
 
-      this.translateAttribute = `translate( ${a} , ${b} )`;
+      // console.log(`translate( ${a} , ${b} )`);
+
+      this.translateAttribute = this.calculateService.calculateCenter(
+        grouparea.getBBox(),
+        this.reportWidth,
+        this.reportHeight
+      ); // `translate( ${a} , ${b} )`;
 
       // this.translateAttribute = this.calculateService.calculateCenter(
       //   rectbbox,
