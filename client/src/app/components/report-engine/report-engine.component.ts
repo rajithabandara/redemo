@@ -10,11 +10,9 @@ import { CalcService } from '../../services/calc.service';
 export class ReportEngineComponent {
   param: any;
   translateAttribute = ``;
-  reportWidth: number;
-  reportHeight: number;
+  reportWidth: number = 0;
+  reportHeight: number = 0;
   toggle: boolean = false;
-  rectcoordx: number;
-  rectcoordy: number;
 
   calculateService: CalcService;
 
@@ -24,6 +22,7 @@ export class ReportEngineComponent {
     this.router.paramMap.subscribe((data) => {
       this.param = data.get('id');
       console.log(this.param);
+      this.toggle = false;
     });
   }
 
@@ -35,41 +34,19 @@ export class ReportEngineComponent {
 
       let grouparea: any = document.getElementById('grouparea');
 
-      let bbox = svgarea.getBoundingClientRect();
+      let {
+        reportHeight,
+        reportWidth,
+      } = this.calculateService.calculateReportSizeWithBBox(svgarea);
 
-      // let rectbbox = svgarea.getBBox();
+      this.reportHeight = reportHeight;
+      this.reportWidth = reportWidth;
 
-      // let midx = bbox.width / 2;
-
-      this.reportHeight = bbox.height;
-      this.reportWidth = bbox.width;
-
-      console.log(grouparea.getBBox());
-
-      // this.rectcoordx = this.reportWidth / 2 - rectbbox.width / 2;
-      // this.rectcoordy = this.reportHeight / 2 - rectbbox.height / 2;
-
-      // console.log(rectbbox.height, rectbbox.width);
-
-      let a =
-        this.reportWidth / 2 -
-        grouparea.getBBox().width / 2 -
-        grouparea.getBBox().x;
-
-      let b =
-        this.reportHeight / 2 -
-        grouparea.getBBox().height / 2 -
-        grouparea.getBBox().y;
-
-      console.log(a);
-
-      this.translateAttribute = `translate( ${a} , ${b} )`;
-
-      // this.translateAttribute = this.calculateService.calculateCenter(
-      //   rectbbox,
-      //   this.reportWidth,
-      //   this.reportHeight
-      // );
+      this.translateAttribute = this.calculateService.calculateCenter(
+        grouparea.getBBox(),
+        this.reportWidth,
+        this.reportHeight
+      );
     } else {
       this.translateAttribute = `translate( 0 , 0 )`;
     }

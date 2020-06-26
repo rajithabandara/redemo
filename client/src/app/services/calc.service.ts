@@ -22,7 +22,19 @@ export class CalcService {
     return { reportHeight, reportWidth };
   }
 
-  calculateCenter( boundryBox: any, reportWidth: number, reportHeight: number): string {
+  calculateReportSizeWithBBox(svgArea: any) {
+    let boundryBox = svgArea.getBoundingClientRect();
+
+    let reportHeight = boundryBox.height;
+    let reportWidth = boundryBox.width;
+    return { reportHeight, reportWidth };
+  }
+
+  calculateCenter(
+    boundryBox: any,
+    reportWidth: number,
+    reportHeight: number
+  ): string {
     console.log(boundryBox);
 
     let centerX = boundryBox.width / 2 + boundryBox.x;
@@ -31,8 +43,6 @@ export class CalcService {
     let differanceX = reportWidth / 2 - centerX;
     let differanceY = reportHeight / 2 - centerY;
 
-    console.log('diff - ', differanceX, differanceY);
-
-    return `translate(${differanceX},${differanceY})`;
+    return `translate (${differanceX},${differanceY})`;
   }
 }
