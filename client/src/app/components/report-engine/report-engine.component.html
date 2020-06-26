@@ -1,7 +1,11 @@
 <div class="maindiv">
   <a> <img class="fltbtns" src="../assets/add.svg" /></a>
   <a> <img class="fltbtns1" src="../assets/minus.svg" /></a>
-  <a> <img class="fltbtns2" src="../assets/correct.svg" /></a>
+  <a (click)="center()">
+    <img class="fltbtns2" src="../assets/correct.svg"
+  /></a>
+
+  <!-- <button>center</button> -->
 
   <!-- 
   <div class="row h-100 align-items-center">
@@ -14,41 +18,91 @@
 
   <div [ngSwitch]="param">
     <div *ngSwitchCase="'dynamic'">
-      <svg class="svgfull" xmlns="http://www.w3.org/2000/svg">
-        <rect
-          x="200"
-          y="100"
-          width="500"
-          height="500"
-          style="fill: rgb(0, 0, 255); stroke-width: 3; stroke: rgb(0, 0, 0);"
-        />
+      <svg id="svgarea" class="svgfull" xmlns="http://www.w3.org/2000/svg">
+        <circle
+          [attr.cx]="reportWidth / 2"
+          [attr.cy]="reportHeight / 2"
+          r="10"
+        ></circle>
+        <g [attr.transform]="translateAttribute">
+          <rect
+            [attr.x]="rectcoordx"
+            [attr.y]="rectcoordy"
+            width="500"
+            height="500"
+            style="
+              fill: rgba(0, 0, 0, 0.5);
+              stroke-width: 3;
+              stroke: rgb(0, 0, 0);
+            "
+          />
+        </g>
       </svg>
     </div>
-    <div class="col-6 mx-auto" *ngSwitchCase="'staticCir'">
-      <svg xmlns="http://www.w3.org/2000/svg" width="200" height="700">
-        <rect
-          width="200"
-          height="700"
-          style="fill: rgb(0, 0, 255); stroke-width: 3; stroke: rgb(0, 0, 0);"
-        />
+    <div *ngSwitchCase="'staticCir'">
+      <svg id="svgarea" class="svgfull" xmlns="http://www.w3.org/2000/svg">
+        <circle
+          [attr.cx]="reportWidth / 2"
+          [attr.cy]="reportHeight / 2"
+          r="10"
+        ></circle>
+        <g [attr.transform]="translateAttribute">
+          <rect
+            [attr.x]="rectcoordx"
+            [attr.y]="rectcoordy"
+            width="200"
+            height="700"
+            style="
+              fill: rgba(0, 0, 0, 0.5);
+              stroke-width: 3;
+              stroke: rgb(0, 0, 0);
+            "
+          />
+        </g>
       </svg>
     </div>
-    <div class="col-6 mx-auto" *ngSwitchCase="'staticRec'">
-      <svg xmlns="http://www.w3.org/2000/svg" width="2000" height="1500">
-        <rect
-          width="2000"
-          height="1500"
-          style="fill: rgb(0, 0, 255); stroke-width: 3; stroke: rgb(0, 0, 0);"
-        />
+    <div *ngSwitchCase="'staticRec'">
+      <svg id="svgarea" class="svgfull" xmlns="http://www.w3.org/2000/svg">
+        <circle
+          [attr.cx]="reportWidth / 2"
+          [attr.cy]="reportHeight / 2"
+          r="10"
+        ></circle>
+        <g [attr.transform]="translateAttribute">
+          <rect
+            [attr.x]="rectcoordx"
+            [attr.y]="rectcoordy"
+            width="2000"
+            height="1500"
+            style="
+              fill: rgba(0, 0, 0, 0.5);
+              stroke-width: 3;
+              stroke: rgb(0, 0, 0);
+            "
+          />
+        </g>
       </svg>
     </div>
-    <div class="col-6 mx-auto" *ngSwitchCase="'staticEllipse'">
-      <svg xmlns="http://www.w3.org/2000/svg" width="200" height="00">
-        <rect
-          width="200"
-          height="700"
-          style="fill: rgb(0, 0, 255); stroke-width: 3; stroke: rgb(0, 0, 0);"
-        />
+    <div *ngSwitchCase="'staticEllipse'">
+      <svg id="svgarea" class="svgfull" xmlns="http://www.w3.org/2000/svg">
+        <circle
+          [attr.cx]="reportWidth / 2"
+          [attr.cy]="reportHeight / 2"
+          r="10"
+        ></circle>
+        <g [attr.transform]="translateAttribute">
+          <rect
+            [attr.x]="rectcoordx"
+            [attr.y]="rectcoordy"
+            width="200"
+            height="1500"
+            style="
+              fill: rgba(0, 0, 0, 0.5);
+              stroke-width: 3;
+              stroke: rgb(0, 0, 0);
+            "
+          />
+        </g>
       </svg>
     </div>
     <div *ngSwitchDefault>
