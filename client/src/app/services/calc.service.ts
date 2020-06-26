@@ -43,25 +43,6 @@ export class CalcService {
     let differanceX = reportWidth / 2 - centerX;
     let differanceY = reportHeight / 2 - centerY;
 
-    console.log('diff - ', differanceX, differanceY);
-
-    return `translate(${differanceX},${differanceY})`;
+    return `translate (${differanceX},${differanceY})`;
   }
 }
-
-
-// console.log(grouparea.getBBox());
-
-// let a =
-//   this.reportWidth / 2 -
-//   grouparea.getBBox().width / 2 -
-//   grouparea.getBBox().x;
-
-// let b =
-//   this.reportHeight / 2 -
-//   grouparea.getBBox().height / 2 -
-//   grouparea.getBBox().y;
-
-// console.log(a);
-
-// this.translateAttribute = `translate( ${a} , ${b} )`;
