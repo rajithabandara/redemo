@@ -4,6 +4,8 @@
   align-items: center;
   align-content: center;
   width: 100vw !important;
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-x: hidden;
 }
 
 .fltbtns {
@@ -21,7 +23,6 @@
   text-align: center;
   box-shadow: 2px 2px 3px #999;
   margin-top: 10px;
-
 }
 .fltbtns1 {
   display: block;
@@ -38,7 +39,6 @@
   text-align: center;
   box-shadow: 2px 2px 3px #999;
   margin-top: 10px;
-
 }
 
 .fltbtns2 {
@@ -50,13 +50,12 @@
   top: 150px;
   /* bottom: 40px; */
   /* right: 40px; */
-  background-color:black;
+  background-color: black;
   color: #fff;
   border-radius: 50px;
   text-align: center;
   box-shadow: 2px 2px 3px #999;
   margin-top: 10px;
-
 }
 
 .pathhead {
@@ -66,7 +65,8 @@
 .svgfull {
   /* height: 100% !important;
   width: 100% !important; */
-
-  height: 91.59999999999vh;
+  overflow-y: hidden !important; /* Hide vertical scrollbar */
+  overflow-x: hidden !important;
+  height: 92vh;
   width: 100vw;
 }
