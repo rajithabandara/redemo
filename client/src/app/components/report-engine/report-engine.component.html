@@ -121,7 +121,12 @@
       </svg> -->
     </div>
     <div *ngSwitchCase="'Rect2'">
-      <svg id="svgarea" class="svgfull" xmlns="http://www.w3.org/2000/svg">
+        <app-rectangle2
+        [translateAttribute]="translateAttribute"
+        [reportWidth]="reportWidth"
+        [reportHeight]="reportHeight"
+      ></app-rectangle2>
+      <!-- <svg id="svgarea" class="svgfull" xmlns="http://www.w3.org/2000/svg">
         <circle
           [attr.cx]="reportWidth / 2"
           [attr.cy]="reportHeight / 2"
@@ -140,10 +145,15 @@
             "
           />
         </g>
-      </svg>
+      </svg> -->
     </div>
     <div *ngSwitchCase="'Rect3'">
-      <svg id="svgarea" class="svgfull" xmlns="http://www.w3.org/2000/svg">
+        <app-rectangle3
+        [translateAttribute]="translateAttribute"
+        [reportWidth]="reportWidth"
+        [reportHeight]="reportHeight"
+      ></app-rectangle3>
+      <!-- <svg id="svgarea" class="svgfull" xmlns="http://www.w3.org/2000/svg">
         <circle
           [attr.cx]="reportWidth / 2"
           [attr.cy]="reportHeight / 2"
@@ -162,10 +172,15 @@
             "
           />
         </g>
-      </svg>
+      </svg> -->
     </div>
     <div *ngSwitchCase="'Rect4'">
-      <svg id="svgarea" class="svgfull" xmlns="http://www.w3.org/2000/svg">
+        <app-rectangle4
+        [translateAttribute]="translateAttribute"
+        [reportWidth]="reportWidth"
+        [reportHeight]="reportHeight"
+      ></app-rectangle4>
+      <!-- <svg id="svgarea" class="svgfull" xmlns="http://www.w3.org/2000/svg">
         <circle
           [attr.cx]="reportWidth / 2"
           [attr.cy]="reportHeight / 2"
@@ -184,7 +199,7 @@
             "
           />
         </g>
-      </svg>
+      </svg> -->
     </div>
     <div *ngSwitchDefault>
       <h2>Does not match for the parameters</h2>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 
 @Component({
   selector: 'app-rectangle3',
@@ -6,9 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rectangle3.component.css']
 })
 export class Rectangle3Component implements OnInit {
+  @Input()
   translateAttribute = ``;
-  reportWidth: number = 0;
-  reportHeight: number = 0;
+  @Input()
+  reportWidth = 0;
+  @Input()
+  reportHeight = 0;
+
   constructor() { }
 
   ngOnInit(): void {
