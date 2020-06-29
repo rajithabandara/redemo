@@ -37,7 +37,7 @@ export class ReportEngineComponent {
       let {
         reportHeight,
         reportWidth,
-      } = this.calculateService.calculateReportSizeWithBBox(svgarea);
+      } = this.calculateService.calculateSVGSizeWithBBox(svgarea);
 
       this.reportHeight = reportHeight;
       this.reportWidth = reportWidth;
@@ -46,6 +46,14 @@ export class ReportEngineComponent {
         grouparea.getBBox(),
         this.reportWidth,
         this.reportHeight
+      );
+
+      console.log(
+        this.calculateService.calculateCenter(
+          grouparea.getBBox(),
+          this.reportWidth,
+          this.reportHeight
+        )
       );
     } else {
       this.translateAttribute = `translate( 0 , 0 )`;

@@ -1,20 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-rectangle1',
   templateUrl: './rectangle1.component.html',
-  styleUrls: ['./rectangle1.component.css']
+  styleUrls: ['./rectangle1.component.css'],
 })
 export class Rectangle1Component implements OnInit {
+  @Input()
   translateAttribute = ``;
-  reportWidth: number = 0;
-  reportHeight: number = 0;
+  @Input()
+  reportWidth = 0;
+  @Input()
+  reportHeight = 0;
 
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

@@ -22,7 +22,7 @@ export class CalcService {
     return { reportHeight, reportWidth };
   }
 
-  calculateReportSizeWithBBox(svgArea: any) {
+  calculateSVGSizeWithBBox(svgArea: any) {
     let boundryBox = svgArea.getBoundingClientRect();
 
     let reportHeight = boundryBox.height;

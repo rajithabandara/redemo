@@ -1,9 +1,7 @@
 <div class="maindiv">
   <a> <img class="fltbtns" src="../assets/add.svg" /></a>
   <a> <img class="fltbtns1" src="../assets/minus.svg" /></a>
-  <a (click)="center()">
-    <img class="fltbtns2" src="../assets/focus.svg"
-  /></a>
+  <a (click)="center()"> <img class="fltbtns2" src="../assets/focus.svg" /></a>
 
   <!-- <button>center</button> -->
 
@@ -18,7 +16,12 @@
 
   <div [ngSwitch]="param">
     <div *ngSwitchCase="'Rect1'">
-      <svg id="svgarea" class="svgfull" xmlns="http://www.w3.org/2000/svg">
+      <app-rectangle1
+        [translateAttribute]="translateAttribute"
+        [reportWidth]="reportWidth"
+        [reportHeight]="reportHeight"
+      ></app-rectangle1>
+      <!-- <svg id="svgarea" class="svgfull" xmlns="http://www.w3.org/2000/svg">
         <circle
           [attr.cx]="reportWidth / 2"
           [attr.cy]="reportHeight / 2"
@@ -35,9 +38,9 @@
               stroke-width: 3;
               stroke: rgb(0, 0, 0);
             "
-          />
+          /> -->
 
-          <!-- <circle
+      <!-- <circle
             cx="100"
             cy="100"
             r="20"
@@ -80,7 +83,7 @@
               stroke: rgb(0, 0, 0);
             "
           /> -->
-          <!-- <rect
+      <!-- <rect
             x="20"
             y="600"
             width="100"
@@ -114,8 +117,8 @@
               stroke: rgb(0, 0, 0);
             "
           /> -->
-        </g>
-      </svg>
+      <!-- </g>
+      </svg> -->
     </div>
     <div *ngSwitchCase="'Rect2'">
       <svg id="svgarea" class="svgfull" xmlns="http://www.w3.org/2000/svg">
@@ -138,7 +141,6 @@
           />
         </g>
       </svg>
-
     </div>
     <div *ngSwitchCase="'Rect3'">
       <svg id="svgarea" class="svgfull" xmlns="http://www.w3.org/2000/svg">
