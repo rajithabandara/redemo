@@ -16,56 +16,58 @@ export class ReportEngineComponent {
   constructor(
     private hostElement: ElementRef,
     private sharedService: SharedService
-  ) {}
+  ) {
+    this.toggle = false;
+  }
 
   center() {
-    console.log(this.toggle, ' toggled !');
+    // console.log(this.toggle, ' toggled !');
 
-    if (!this.toggle) {
-      let svgViewableArea: any = this.hostElement.nativeElement.querySelector(
-        '#svgViewableArea'
-      );
+    // if (!this.toggle) {
+    let svgViewableArea: any = this.hostElement.nativeElement.querySelector(
+      '#svgViewableArea'
+    );
 
-      let reportArea: any = this.hostElement.nativeElement.querySelector(
-        '#reportArea'
-      );
+    let reportArea: any = this.hostElement.nativeElement.querySelector(
+      '#reportArea'
+    );
 
-      let {
-        viewableAreaHeight,
-        viewableAreaWidth,
-      } = this.getViewableAreaDimesion(svgViewableArea);
+    let {
+      viewableAreaHeight,
+      viewableAreaWidth,
+    } = this.getViewableAreaDimesion(svgViewableArea);
 
-      this.viewableAreaHeight = viewableAreaHeight;
-      this.viewableAreaWidth = viewableAreaWidth;
+    this.viewableAreaHeight = viewableAreaHeight;
+    this.viewableAreaWidth = viewableAreaWidth;
 
-      this.translateAttribute = this.getCenterTranslation(
-        reportArea,
-        this.viewableAreaWidth,
-        this.viewableAreaHeight
-      );
+    this.translateAttribute = this.getCenterTranslation(
+      reportArea,
+      this.viewableAreaWidth,
+      this.viewableAreaHeight
+    );
 
-      let translationData = {
-        translateAttribute: this.translateAttribute,
-        viewableAreaHeight: this.viewableAreaHeight,
-        viewableAreaWidth: this.viewableAreaWidth,
-      };
+    let translationData = {
+      translateAttribute: this.translateAttribute,
+      viewableAreaHeight: this.viewableAreaHeight,
+      viewableAreaWidth: this.viewableAreaWidth,
+    };
 
-      let translationDataStr = JSON.stringify(translationData);
+    let translationDataStr = JSON.stringify(translationData);
 
-      this.sharedService.emmitTranslationString(translationDataStr);
-    } else {
-      this.translateAttribute = `translate( 0 , 0 )`;
+    this.sharedService.emmitTranslationString(translationDataStr);
+    // } else {
+    //   this.translateAttribute = `translate( 0 , 0 )`;
 
-      let translationData = {
-        translateAttribute: this.translateAttribute,
-        viewableAreaHeight: this.viewableAreaHeight,
-        viewableAreaWidth: this.viewableAreaWidth,
-      };
-      let translationDataStr = JSON.stringify(translationData);
+    //   let translationData = {
+    //     translateAttribute: this.translateAttribute,
+    //     viewableAreaHeight: this.viewableAreaHeight,
+    //     viewableAreaWidth: this.viewableAreaWidth,
+    //   };
+    //   let translationDataStr = JSON.stringify(translationData);
 
-      this.sharedService.emmitTranslationString(translationDataStr);
-    }
-    this.toggle = !this.toggle;
+    //   this.sharedService.emmitTranslationString(translationDataStr);
+    // }
+    // this.toggle = !this.toggle;
   }
 
   getViewableAreaDimesion(svgViewableArea: any) {

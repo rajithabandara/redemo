@@ -7,6 +7,7 @@ import { SharedService } from '../../../services/sharedData.service';
   styleUrls: ['./rectangle4.component.css'],
 })
 export class Rectangle4Component implements OnInit {
+  
   translateAttribute = ``;
   viewableAreaWidth = 0;
   viewableAreaHeight = 0;
@@ -23,4 +24,5 @@ export class Rectangle4Component implements OnInit {
       this.viewableAreaHeight = translationData.viewableAreaHeight;
     });
   }
+
 }
