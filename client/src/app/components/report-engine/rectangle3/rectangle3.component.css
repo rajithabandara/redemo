@@ -21,7 +21,6 @@
   text-align: center;
   box-shadow: 2px 2px 3px #999;
   margin-top: 10px;
-
 }
 .fltbtns1 {
   display: block;
@@ -38,7 +37,6 @@
   text-align: center;
   box-shadow: 2px 2px 3px #999;
   margin-top: 10px;
-
 }
 
 .fltbtns2 {
@@ -56,7 +54,6 @@
   text-align: center;
   box-shadow: 2px 2px 3px #999;
   margin-top: 10px;
-
 }
 
 .pathhead {
@@ -67,6 +64,6 @@
   /* height: 100% !important;
   width: 100% !important; */
 
-  height: 91.59999999999vh;
+  height: 92vh;
   width: 100vw;
 }

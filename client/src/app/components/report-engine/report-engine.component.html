@@ -3,7 +3,7 @@
   <a> <img class="fltbtns1" src="../assets/minus.svg" /></a>
   <a (click)="center()"> <img class="fltbtns2" src="../assets/focus.svg" /></a>
 
-  <router-outlet 
+  <router-outlet
   ></router-outlet>
 
 </div>
@@ -23,10 +23,10 @@
     <div *ngSwitchCase="'Rect1'">
       <app-rectangle1
         [translateAttribute]="translateAttribute"
-        [reportWidth]="reportWidth"
-        [reportHeight]="reportHeight"
-      ></app-rectangle1> -->
-      <!-- <svg id="svgarea" class="svgfull" xmlns="http://www.w3.org/2000/svg">
+        [viewableAreaWidth]="viewableAreaWidth"
+        [viewableAreaHeight]="viewableAreaHeight"
+      ></app-rectangle1>
+       <svg id="svgarea" class="svgfull" xmlns="http://www.w3.org/2000/svg">
         <circle
           [attr.cx]="reportWidth / 2"
           [attr.cy]="reportHeight / 2"
@@ -126,12 +126,12 @@
       </svg> -->
     <!-- </div>
     <div *ngSwitchCase="'Rect2'">
-        <app-rectangle2
+      <app-rectangle2
         [translateAttribute]="translateAttribute"
-        [reportWidth]="reportWidth"
-        [reportHeight]="reportHeight"
-      ></app-rectangle2> -->
-      <!-- <svg id="svgarea" class="svgfull" xmlns="http://www.w3.org/2000/svg">
+        [viewableAreaWidth]="viewableAreaWidth"
+        [viewableAreaHeight]="viewableAreaHeight"
+      ></app-rectangle2>
+       <svg id="svgarea" class="svgfull" xmlns="http://www.w3.org/2000/svg">
         <circle
           [attr.cx]="reportWidth / 2"
           [attr.cy]="reportHeight / 2"
@@ -153,11 +153,11 @@
       </svg> -->
     <!-- </div>
     <div *ngSwitchCase="'Rect3'">
-        <app-rectangle3
+      <app-rectangle3
         [translateAttribute]="translateAttribute"
-        [reportWidth]="reportWidth"
-        [reportHeight]="reportHeight"
-      ></app-rectangle3> -->
+        [viewableAreaWidth]="viewableAreaWidth"
+        [viewableAreaHeight]="viewableAreaHeight"
+      ></app-rectangle3>
       <!-- <svg id="svgarea" class="svgfull" xmlns="http://www.w3.org/2000/svg">
         <circle
           [attr.cx]="reportWidth / 2"
@@ -180,11 +180,11 @@
       </svg> -->
     <!-- </div>
     <div *ngSwitchCase="'Rect4'">
-        <app-rectangle4
+      <app-rectangle4
         [translateAttribute]="translateAttribute"
-        [reportWidth]="reportWidth"
-        [reportHeight]="reportHeight"
-      ></app-rectangle4> -->
+        [viewableAreaWidth]="viewableAreaWidth"
+        [viewableAreaHeight]="viewableAreaHeight"
+      ></app-rectangle4>
       <!-- <svg id="svgarea" class="svgfull" xmlns="http://www.w3.org/2000/svg">
         <circle
           [attr.cx]="reportWidth / 2"

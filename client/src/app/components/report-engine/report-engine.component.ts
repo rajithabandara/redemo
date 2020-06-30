@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CalcService } from '../../services/calc.service';
 
 @Component({
   selector: 'app-report-engine',
@@ -11,57 +10,74 @@ export class ReportEngineComponent {
 
 
 
-  // param: any;
+  param: any;
   translateAttribute = ``;
-  reportWidth: number = 0;
-  reportHeight: number = 0;
+  viewableAreaWidth: number = 0;
+  viewableAreaHeight: number = 0;
   toggle: boolean = false;
 
-  calculateService: CalcService;
-
-  constructor(private router: ActivatedRoute, calculateService: CalcService) {
-    this.calculateService = calculateService;
-
-    // this.router.paramMap.subscribe((data) => {
-    //   this.param = data.get('id');
-    //   console.log(this.param);
-    //
-    // });
-    this.toggle = false;
+  constructor(private router: ActivatedRoute, private hostElement: ElementRef) {
+    this.router.paramMap.subscribe((data) => {
+      this.param = data.get('id');
+      console.log(this.param);
+      this.toggle = false;
+    });
   }
 
   center() {
     console.log(this.toggle, ' toggled !');
 
     if (!this.toggle) {
-      let svgarea: any = document.getElementById('svgarea');
-
-      let grouparea: any = document.getElementById('grouparea');
-
-      let {
-        reportHeight,
-        reportWidth,
-      } = this.calculateService.calculateSVGSizeWithBBox(svgarea);
-
-      this.reportHeight = reportHeight;
-      this.reportWidth = reportWidth;
-
-      this.translateAttribute = this.calculateService.calculateCenter(
-        grouparea.getBBox(),
-        this.reportWidth,
-        this.reportHeight
+      let svgViewableArea: any = this.hostElement.nativeElement.querySelector(
+        '#svgarea'
       );
 
-      console.log(
-        this.calculateService.calculateCenter(
-          grouparea.getBBox(),
-          this.reportWidth,
-          this.reportHeight
-        )
+      let reportArea: any = this.hostElement.nativeElement.querySelector(
+        '#grouparea'
+      );
+
+      let {
+        viewableAreaHeight,
+        viewableAreaWidth,
+      } = this.getViewableAreaDimesion(svgViewableArea);
+
+      this.viewableAreaHeight = viewableAreaHeight;
+      this.viewableAreaWidth = viewableAreaWidth;
+
+      this.translateAttribute = this.getCenterTranslation(
+        reportArea,
+        this.viewableAreaWidth,
+        this.viewableAreaHeight
       );
     } else {
       this.translateAttribute = `translate( 0 , 0 )`;
     }
     this.toggle = !this.toggle;
+  }
+
+  getViewableAreaDimesion(svgViewableArea: any) {
+    let boundryBox = svgViewableArea.getBoundingClientRect();
+
+    let viewableAreaHeight = boundryBox.height;
+    let viewableAreaWidth = boundryBox.width;
+    return { viewableAreaHeight, viewableAreaWidth };
+  }
+
+  getCenterTranslation(
+    reportBoundryBox: any,
+    viewableAreaWidth: number,
+    viewableAreaHeight: number
+  ): string {
+    console.log(reportBoundryBox);
+
+    reportBoundryBox = reportBoundryBox.getBBox();
+
+    let reportCenterX = reportBoundryBox.width / 2 + reportBoundryBox.x;
+    let reportCenterY = reportBoundryBox.height / 2 + reportBoundryBox.y;
+
+    let differanceX = viewableAreaWidth / 2 - reportCenterX;
+    let differanceY = viewableAreaHeight / 2 - reportCenterY;
+
+    return `translate (${differanceX},${differanceY})`;
   }
 }

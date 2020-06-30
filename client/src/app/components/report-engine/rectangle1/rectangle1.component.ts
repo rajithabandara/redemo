@@ -9,9 +9,9 @@ export class Rectangle1Component implements OnInit {
   @Input()
   translateAttribute = ``;
   @Input()
-  reportWidth = 0;
+  viewableAreaWidth = 0;
   @Input()
-  reportHeight = 0;
+  viewableAreaHeight = 0;
 
   constructor() {}
 
