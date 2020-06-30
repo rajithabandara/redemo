@@ -29,11 +29,11 @@ export class ReportEngineComponent {
 
     if (!this.toggle) {
       let svgViewableArea: any = this.hostElement.nativeElement.querySelector(
-        '#svgarea'
+        '#svgViewableArea'
       );
 
       let reportArea: any = this.hostElement.nativeElement.querySelector(
-        '#grouparea'
+        '#reportArea'
       );
 
       let {
