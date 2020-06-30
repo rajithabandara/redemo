@@ -8,7 +8,10 @@ import { CalcService } from '../../services/calc.service';
   styleUrls: ['./report-engine.component.css'],
 })
 export class ReportEngineComponent {
-  param: any;
+
+
+
+  // param: any;
   translateAttribute = ``;
   reportWidth: number = 0;
   reportHeight: number = 0;
@@ -19,11 +22,12 @@ export class ReportEngineComponent {
   constructor(private router: ActivatedRoute, calculateService: CalcService) {
     this.calculateService = calculateService;
 
-    this.router.paramMap.subscribe((data) => {
-      this.param = data.get('id');
-      console.log(this.param);
-      this.toggle = false;
-    });
+    // this.router.paramMap.subscribe((data) => {
+    //   this.param = data.get('id');
+    //   console.log(this.param);
+    //
+    // });
+    this.toggle = false;
   }
 
   center() {
