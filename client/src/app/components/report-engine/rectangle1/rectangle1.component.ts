@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../../../services/sharedData.service';
 
 @Component({
   selector: 'app-rectangle1',
@@ -6,14 +7,20 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./rectangle1.component.css'],
 })
 export class Rectangle1Component implements OnInit {
-  @Input()
   translateAttribute = ``;
-  @Input()
   viewableAreaWidth = 0;
-  @Input()
   viewableAreaHeight = 0;
 
-  constructor() {}
+  constructor(private sharedService: SharedService) {}
+  ngOnInit(): void {
+    this.sharedService.sharedMessage.subscribe((translationDataStr) => {
+      console.log(translationDataStr);
 
-  ngOnInit(): void {}
+      let translationData = JSON.parse(translationDataStr);
+
+      this.translateAttribute = translationData.translateAttribute;
+      this.viewableAreaWidth = translationData.viewableAreaWidth;
+      this.viewableAreaHeight = translationData.viewableAreaHeight;
+    });
+  }
 }

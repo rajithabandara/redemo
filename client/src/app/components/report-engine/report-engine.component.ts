@@ -1,5 +1,5 @@
-import { Component, ElementRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, ElementRef, OnInit } from '@angular/core';
+import { SharedService } from '../../services/sharedData.service';
 
 @Component({
   selector: 'app-report-engine',
@@ -7,22 +7,16 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./report-engine.component.css'],
 })
 export class ReportEngineComponent {
-
-
-
   param: any;
   translateAttribute = ``;
   viewableAreaWidth: number = 0;
   viewableAreaHeight: number = 0;
   toggle: boolean = false;
 
-  constructor(private router: ActivatedRoute, private hostElement: ElementRef) {
-    this.router.paramMap.subscribe((data) => {
-      this.param = data.get('id');
-      console.log(this.param);
-      this.toggle = false;
-    });
-  }
+  constructor(
+    private hostElement: ElementRef,
+    private sharedService: SharedService
+  ) {}
 
   center() {
     console.log(this.toggle, ' toggled !');
@@ -49,8 +43,27 @@ export class ReportEngineComponent {
         this.viewableAreaWidth,
         this.viewableAreaHeight
       );
+
+      let translationData = {
+        translateAttribute: this.translateAttribute,
+        viewableAreaHeight: this.viewableAreaHeight,
+        viewableAreaWidth: this.viewableAreaWidth,
+      };
+
+      let translationDataStr = JSON.stringify(translationData);
+
+      this.sharedService.emmitTranslationString(translationDataStr);
     } else {
       this.translateAttribute = `translate( 0 , 0 )`;
+
+      let translationData = {
+        translateAttribute: this.translateAttribute,
+        viewableAreaHeight: this.viewableAreaHeight,
+        viewableAreaWidth: this.viewableAreaWidth,
+      };
+      let translationDataStr = JSON.stringify(translationData);
+
+      this.sharedService.emmitTranslationString(translationDataStr);
     }
     this.toggle = !this.toggle;
   }

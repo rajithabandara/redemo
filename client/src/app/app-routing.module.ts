@@ -6,17 +6,17 @@ import { Rectangle2Component } from './components/report-engine/rectangle2/recta
 import { Rectangle3Component } from './components/report-engine/rectangle3/rectangle3.component';
 import { Rectangle4Component } from './components/report-engine/rectangle4/rectangle4.component';
 
-
 const routes: Routes = [
-  { path: 'reportengine', component: ReportEngineComponent,
-  children:[
-    { path: 'rectangle1', component: Rectangle1Component },
-    { path: 'rectangle2', component: Rectangle2Component },
-    { path: 'rectangle3', component: Rectangle3Component },
-    { path: 'rectangle4', component: Rectangle4Component },
-  ] },
-
-  // { path: 'reportengine/:id', component: ReportEngineComponent },
+  {
+    path: 'reportengine',
+    component: ReportEngineComponent,
+    children: [
+      { path: 'rectangle1', component: Rectangle1Component },
+      { path: 'rectangle2', component: Rectangle2Component },
+      { path: 'rectangle3', component: Rectangle3Component },
+      { path: 'rectangle4', component: Rectangle4Component },
+    ],
+  },
 ];
 
 @NgModule({
