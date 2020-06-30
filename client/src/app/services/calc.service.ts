@@ -16,32 +16,34 @@ export class CalcService {
 
     console.log(heightArray, widthArray);
 
-    let reportHeight = heightArray[heightArray.length - 1] + 300;
-    let reportWidth = widthArray[widthArray.length - 1] + 300;
+    let viewableAreaHeight = heightArray[heightArray.length - 1] + 300;
+    let viewableAreaWidth = widthArray[widthArray.length - 1] + 300;
 
-    return { reportHeight, reportWidth };
+    return { viewableAreaHeight, viewableAreaWidth };
   }
 
-  calculateSVGSizeWithBBox(svgArea: any) {
-    let boundryBox = svgArea.getBoundingClientRect();
+  getViewableAreaDimesion(svgViewableArea: any) {
+    let boundryBox = svgViewableArea.getBoundingClientRect();
 
-    let reportHeight = boundryBox.height;
-    let reportWidth = boundryBox.width;
-    return { reportHeight, reportWidth };
+    let viewableAreaHeight = boundryBox.height;
+    let viewableAreaWidth = boundryBox.width;
+    return { viewableAreaHeight, viewableAreaWidth };
   }
 
-  calculateCenter(
-    boundryBox: any,
-    reportWidth: number,
-    reportHeight: number
+  getCenterTranslation(
+    reportBoundryBox: any,
+    viewableAreaWidth: number,
+    viewableAreaHeight: number
   ): string {
-    console.log(boundryBox);
+    console.log(reportBoundryBox);
 
-    let centerX = boundryBox.width / 2 + boundryBox.x;
-    let centerY = boundryBox.height / 2 + boundryBox.y;
+    reportBoundryBox = reportBoundryBox.getBBox();
 
-    let differanceX = reportWidth / 2 - centerX;
-    let differanceY = reportHeight / 2 - centerY;
+    let centerX = reportBoundryBox.width / 2 + reportBoundryBox.x;
+    let centerY = reportBoundryBox.height / 2 + reportBoundryBox.y;
+
+    let differanceX = viewableAreaWidth / 2 - centerX;
+    let differanceY = viewableAreaHeight / 2 - centerY;
 
     return `translate (${differanceX},${differanceY})`;
   }
