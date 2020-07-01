@@ -21,9 +21,7 @@ export class ReportEngineComponent {
   }
 
   center() {
-    // console.log(this.toggle, ' toggled !');
 
-    // if (!this.toggle) {
     let svgViewableArea: any = this.hostElement.nativeElement.querySelector(
       '#svgViewableArea'
     );
@@ -55,23 +53,15 @@ export class ReportEngineComponent {
     let translationDataStr = JSON.stringify(translationData);
 
     this.sharedService.emmitTranslationString(translationDataStr);
-    // } else {
-    //   this.translateAttribute = `translate( 0 , 0 )`;
 
-    //   let translationData = {
-    //     translateAttribute: this.translateAttribute,
-    //     viewableAreaHeight: this.viewableAreaHeight,
-    //     viewableAreaWidth: this.viewableAreaWidth,
-    //   };
-    //   let translationDataStr = JSON.stringify(translationData);
-
-    //   this.sharedService.emmitTranslationString(translationDataStr);
-    // }
-    // this.toggle = !this.toggle;
   }
 
   getViewableAreaDimesion(svgViewableArea: any) {
     let boundryBox = svgViewableArea.getBoundingClientRect();
+
+
+   
+
 
     let viewableAreaHeight = boundryBox.height;
     let viewableAreaWidth = boundryBox.width;
@@ -85,7 +75,7 @@ export class ReportEngineComponent {
   ): string {
     console.log(reportBoundryBox);
 
-    reportBoundryBox = reportBoundryBox.getBBox();
+    reportBoundryBox = reportBoundryBox.getBbox();
 
     let reportCenterX = reportBoundryBox.width / 2 + reportBoundryBox.x;
     let reportCenterY = reportBoundryBox.height / 2 + reportBoundryBox.y;
@@ -94,5 +84,9 @@ export class ReportEngineComponent {
     let differanceY = viewableAreaHeight / 2 - reportCenterY;
 
     return `translate (${differanceX},${differanceY})`;
+
+
+
+
   }
 }
