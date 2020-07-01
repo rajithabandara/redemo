@@ -12,6 +12,9 @@ import { Rectangle2Component } from './components/report-engine/rectangle2/recta
 
 import { Rectangle4Component } from './components/report-engine/rectangle4/rectangle4.component';
 import { Rectangle3Component } from './components/report-engine/rectangle3/rectangle3.component';
+import { DynamicCirclesComponent } from './components/report-engine/dynamic-circles/dynamic-circles.component';
+import { DynamicRectanglesComponent } from './components/report-engine/dynamic-rectangles/dynamic-rectangles.component';
+
 
 @NgModule({
   declarations: [
@@ -21,6 +24,9 @@ import { Rectangle3Component } from './components/report-engine/rectangle3/recta
     Rectangle2Component,
     Rectangle4Component,
     Rectangle3Component,
+    DynamicCirclesComponent,
+    DynamicRectanglesComponent,
+  
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [SharedService],
