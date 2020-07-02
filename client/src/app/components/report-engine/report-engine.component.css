@@ -10,7 +10,7 @@
 
 .fltbtns {
   display: block;
-
+  cursor: pointer;
   position: fixed;
   width: 20px;
   height: 20px;
@@ -25,6 +25,8 @@
   margin-top: 10px;
 }
 .fltbtns1 {
+  cursor: pointer;
+
   display: block;
   left: 20px;
   position: fixed;
@@ -42,6 +44,8 @@
 }
 
 .fltbtns2 {
+  cursor: pointer;
+
   display: block;
   left: 20px;
   position: fixed;

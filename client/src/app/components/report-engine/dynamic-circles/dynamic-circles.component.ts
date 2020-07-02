@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SharedService } from '../../../services/sharedData.service';
 
 @Component({
@@ -7,11 +6,12 @@ import { SharedService } from '../../../services/sharedData.service';
   templateUrl: './dynamic-circles.component.html',
   styleUrls: ['./dynamic-circles.component.css'],
 })
-export class DynamicCirclesComponent implements OnInit {
+export class DynamicCirclesComponent implements OnInit, OnDestroy {
   translateAttribute = ``;
   viewableAreaWidth = 0;
   viewableAreaHeight = 0;
   coordinates = [];
+  sharedServiceObservable: any;
 
   constructor(private sharedService: SharedService) {
     for (let i = 0; i < 20; i++) {
@@ -21,15 +21,22 @@ export class DynamicCirclesComponent implements OnInit {
       });
     }
   }
+
+  ngOnDestroy(): void {
+    console.log('unsubscribe');
+    this.sharedServiceObservable.unsubscribe();
+  }
   ngOnInit(): void {
-    this.sharedService.sharedMessage.subscribe((translationDataStr) => {
-      console.log(translationDataStr);
+    this.sharedServiceObservable = this.sharedService.sharedMessage.subscribe(
+      (translationDataStr) => {
+        console.log(translationDataStr);
 
-      let translationData = JSON.parse(translationDataStr);
+        let translationData = JSON.parse(translationDataStr);
 
-      this.translateAttribute = translationData.translateAttribute;
-      this.viewableAreaWidth = translationData.viewableAreaWidth;
-      this.viewableAreaHeight = translationData.viewableAreaHeight;
-    });
+        this.translateAttribute = translationData.translateAttribute;
+        this.viewableAreaWidth = translationData.viewableAreaWidth;
+        this.viewableAreaHeight = translationData.viewableAreaHeight;
+      }
+    );
   }
 }

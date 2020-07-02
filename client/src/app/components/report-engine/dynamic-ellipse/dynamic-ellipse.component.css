@@ -1,0 +1,70 @@
+.maindiv {
+    height: 92vh !important;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    width: 100vw !important;
+  }
+  
+  .fltbtns {
+    display: block;
+  
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    left: 20px;
+    /* bottom: 40px; */
+    /* right: 40px; */
+    background-color: #0c9;
+    color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 2px 3px #999;
+    margin-top: 10px;
+  }
+  .fltbtns1 {
+    display: block;
+    left: 20px;
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    top: 110px;
+    /* bottom: 40px; */
+    /* right: 40px; */
+    background-color: #0c9;
+    color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 2px 3px #999;
+    margin-top: 10px;
+  }
+  
+  .fltbtns2 {
+    display: block;
+    left: 20px;
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    top: 140px;
+    /* bottom: 40px; */
+    /* right: 40px; */
+    background-color: #0c9;
+    color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 2px 3px #999;
+    margin-top: 10px;
+  }
+  
+  .pathhead {
+    text-align: center;
+  }
+  
+  .svgfull {
+    /* height: 100% !important;
+      width: 100% !important; */
+  
+    height: 92vh;
+    width: 100vw;
+  }
+  
