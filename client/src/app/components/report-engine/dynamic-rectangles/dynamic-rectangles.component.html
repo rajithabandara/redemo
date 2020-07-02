@@ -1,18 +1,17 @@
 <svg id="svgViewableArea" class="svgfull" xmlns="http://www.w3.org/2000/svg">
-    <circle
-      [attr.cx]="viewableAreaWidth / 2"
-      [attr.cy]="viewableAreaHeight / 2"
-      r="10"
-    ></circle>
-    <g id="reportArea" [attr.transform]="translateAttribute">
-      <rect
-        *ngFor="let item of coordinates"
-        [attr.x]="item.x"
-        [attr.y]="item.y"
-        height="200"
-        width="200"
-        style="fill: yellow; stroke: purple; stroke-width: 2;"
-      />
-    </g>
-  </svg>
-  
+  <circle
+    [attr.cx]="viewableAreaWidth / 2"
+    [attr.cy]="viewableAreaHeight / 2"
+    r="10"
+  ></circle>
+  <g id="reportArea" [attr.transform]="translateAttribute">
+    <rect
+      *ngFor="let item of coordinates"
+      [attr.x]="item.x"
+      [attr.y]="item.y"
+      height="200"
+      width="200"
+      style="fill: rgba(0, 0, 0, 0.5); stroke: purple; stroke-width: 2;"
+    />
+  </g>
+</svg>

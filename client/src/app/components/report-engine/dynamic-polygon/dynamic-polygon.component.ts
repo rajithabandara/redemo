@@ -19,9 +19,9 @@ export class DynamicPolygonComponent implements OnInit, OnDestroy {
       let y = Math.round((Math.random() * 5000) % 2500);
 
       this.coordinates.push(
-        `${x + 100},${y + 10} ${x + 10},${y + 198} ${x + 190},${y + 87} ${
-          x + 10
-        },${y + 78} ${x + 160},${y + 198}`
+        `${x + 150},${y + 75} ${x + 258},${y + 137.5} ${x + 258},${y + 262.5} ${
+          x + 150
+        },${y + 325} ${x + 42},${y + 262.6}  ${x + 42},${y + 137.5}`
       );
     }
   }
