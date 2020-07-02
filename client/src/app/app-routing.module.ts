@@ -7,6 +7,8 @@ import { Rectangle3Component } from './components/report-engine/rectangle3/recta
 import { Rectangle4Component } from './components/report-engine/rectangle4/rectangle4.component';
 import { DynamicRectanglesComponent } from './components/report-engine/dynamic-rectangles/dynamic-rectangles.component';
 import { DynamicCirclesComponent } from './components/report-engine/dynamic-circles/dynamic-circles.component';
+import { DynamicEllipseComponent } from './components/report-engine/dynamic-ellipse/dynamic-ellipse.component';
+import { DynamicPolygonComponent } from './components/report-engine/dynamic-polygon/dynamic-polygon.component';
 
 const routes: Routes = [
   {
@@ -19,6 +21,8 @@ const routes: Routes = [
       { path: 'rectangle4', component: Rectangle4Component },
       { path: 'dynamicCircle', component: DynamicCirclesComponent },
       { path: 'dynamicRectangle', component: DynamicRectanglesComponent},
+      { path: 'dynamicEllipse', component: DynamicEllipseComponent},
+      { path: 'dynamicPolygon', component: DynamicPolygonComponent},
     ],
   },
 ];

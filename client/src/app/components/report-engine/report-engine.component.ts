@@ -57,6 +57,9 @@ export class ReportEngineComponent {
   getViewableAreaDimesion(svgViewableArea: any) {
     let boundryBox = svgViewableArea.getBoundingClientRect();
 
+
+
+
     let viewableAreaHeight = boundryBox.height;
     let viewableAreaWidth = boundryBox.width;
     return { viewableAreaHeight, viewableAreaWidth };
