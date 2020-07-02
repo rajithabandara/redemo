@@ -15,6 +15,7 @@ import { Rectangle3Component } from './components/report-engine/rectangle3/recta
 import { DynamicCirclesComponent } from './components/report-engine/dynamic-circles/dynamic-circles.component';
 import { DynamicRectanglesComponent } from './components/report-engine/dynamic-rectangles/dynamic-rectangles.component';
 import { DynamicEllipseComponent } from './components/report-engine/dynamic-ellipse/dynamic-ellipse.component';
+import { DynamicPolygonComponent } from './components/report-engine/dynamic-polygon/dynamic-polygon.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { DynamicEllipseComponent } from './components/report-engine/dynamic-elli
     DynamicCirclesComponent,
     DynamicRectanglesComponent,
     DynamicEllipseComponent,
+    DynamicPolygonComponent,
   
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
