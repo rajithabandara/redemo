@@ -38,7 +38,7 @@ export class ReportEngineComponent {
     this.viewableAreaWidth = viewableAreaWidth;
 
     this.translateAttribute = this.getCenterTranslation(
-      reportArea,
+      reportArea.getBBox(),
       this.viewableAreaWidth,
       this.viewableAreaHeight
     );
@@ -69,7 +69,7 @@ export class ReportEngineComponent {
   ): string {
     console.log(reportBoundryBox);
 
-    reportBoundryBox = reportBoundryBox.getBbox();
+    reportBoundryBox = reportBoundryBox;
 
     let reportCenterX = reportBoundryBox.width / 2 + reportBoundryBox.x;
     let reportCenterY = reportBoundryBox.height / 2 + reportBoundryBox.y;
