@@ -60,7 +60,7 @@ export class ReportEngineComponent {
     let boundryBox = svgViewableArea.getBoundingClientRect();
 
 
-   
+
 
 
     let viewableAreaHeight = boundryBox.height;
@@ -75,7 +75,7 @@ export class ReportEngineComponent {
   ): string {
     console.log(reportBoundryBox);
 
-    reportBoundryBox = reportBoundryBox.getBbox();
+    reportBoundryBox = reportBoundryBox.getBBox();
 
     let reportCenterX = reportBoundryBox.width / 2 + reportBoundryBox.x;
     let reportCenterY = reportBoundryBox.height / 2 + reportBoundryBox.y;
