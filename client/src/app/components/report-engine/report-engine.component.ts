@@ -21,7 +21,6 @@ export class ReportEngineComponent {
   }
 
   center() {
-
     let svgViewableArea: any = this.hostElement.nativeElement.querySelector(
       '#svgViewableArea'
     );
@@ -39,7 +38,7 @@ export class ReportEngineComponent {
     this.viewableAreaWidth = viewableAreaWidth;
 
     this.translateAttribute = this.getCenterTranslation(
-      reportArea,
+      reportArea.getBBox(),
       this.viewableAreaWidth,
       this.viewableAreaHeight
     );
@@ -53,7 +52,6 @@ export class ReportEngineComponent {
     let translationDataStr = JSON.stringify(translationData);
 
     this.sharedService.emmitTranslationString(translationDataStr);
-
   }
 
   getViewableAreaDimesion(svgViewableArea: any) {
@@ -74,7 +72,7 @@ export class ReportEngineComponent {
   ): string {
     console.log(reportBoundryBox);
 
-    reportBoundryBox = reportBoundryBox.getBBox();
+    reportBoundryBox = reportBoundryBox;
 
     let reportCenterX = reportBoundryBox.width / 2 + reportBoundryBox.x;
     let reportCenterY = reportBoundryBox.height / 2 + reportBoundryBox.y;
