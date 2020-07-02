@@ -16,8 +16,8 @@ export class DynamicCirclesComponent implements OnInit {
   constructor(private sharedService: SharedService) {
     for (let i = 0; i < 20; i++) {
       this.coordinates.push({
-        x: Math.round((Math.random() * 5000) % 1000),
-        y: Math.round((Math.random() * 5000) % 1000),
+        x: Math.round((Math.random() * 5000) % 500),
+        y: Math.round((Math.random() * 5000) % 500),
       });
     }
   }
