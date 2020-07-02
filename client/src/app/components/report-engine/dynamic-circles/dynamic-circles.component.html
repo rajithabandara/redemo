@@ -5,12 +5,12 @@
     r="10"
   ></circle>
   <g id="reportArea" [attr.transform]="translateAttribute">
-    <rect
-      x="100"
-      y="300"
-      width="200"
-      height="1500"
-      style="fill: rgba(0, 0, 0, 0.5); stroke-width: 3; stroke: rgb(0, 0, 0);"
+    <circle
+      *ngFor="let item of coordinates"
+      [attr.cx]="item.x"
+      [attr.cy]="item.y"
+      r="30"
+      style="fill: yellow; stroke: purple; stroke-width: 2;"
     />
   </g>
 </svg>
