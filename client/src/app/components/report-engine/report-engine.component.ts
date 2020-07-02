@@ -62,7 +62,6 @@ export class ReportEngineComponent {
 
 
 
-
     let viewableAreaHeight = boundryBox.height;
     let viewableAreaWidth = boundryBox.width;
     return { viewableAreaHeight, viewableAreaWidth };
