@@ -1,7 +1,6 @@
 <div class="maindiv">
-  <a> <img class="fltbtns" src="../assets/add.svg" /></a>
-  <a> <img class="fltbtns1" src="../assets/minus.svg" /></a>
+  <a (click)="zoomIn()"> <img class="fltbtns" src="../assets/add.svg" /></a>
+  <a (click)="zoomOut()"> <img class="fltbtns1" src="../assets/minus.svg" /></a>
   <a (click)="center()"> <img class="fltbtns2" src="../assets/focus.svg" /></a>
   <router-outlet></router-outlet>
 </div>
-

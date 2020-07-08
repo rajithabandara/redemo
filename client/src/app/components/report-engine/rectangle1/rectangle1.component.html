@@ -1,10 +1,11 @@
-<svg id="svgViewableArea" class="svgfull">
+<svg id="svgViewableArea" [attr.viewBox]="viewBoxAttribute" class="svgfull">
   <circle
     [attr.cx]="viewableAreaWidth / 2"
     [attr.cy]="viewableAreaHeight / 2"
     r="10"
   ></circle>
   <g id="reportArea" [attr.transform]="translateAttribute">
+    <!-- <circle cx="100" cy="300" r="40"></circle> -->
     <rect
       x="100"
       y="300"
