@@ -1,0 +1,17 @@
+.circleval{
+    fill:yellow !important; 
+  }
+  
+  .rectangle{
+    fill: rgba(15, 4, 4, 0.938) !important; 
+    stroke-width: 3 !important; 
+    stroke: rgb(0, 0, 0) !important;
+    
+  }
+  
+  .textVal{
+    fill:black !important; 
+    font-weight: 900;  
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 15px !important;
+  }

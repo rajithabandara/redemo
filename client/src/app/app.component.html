@@ -82,6 +82,15 @@
     </ul>
     <ul class="navbar-nav"></ul>
   </div>
+
+  <div class="theme-selection">
+    <select [(ngModel)]="themeId"  class="form-control" (change)="selectStyle()" name="themeNo">
+      <option [value]="-1" >----- Select Theme -----</option>
+      <option [value]="1" >Red Theme</option>
+      <option [value]="2" >Blue Theme</option>     
+      <option [value]="3" >Black Theme</option>     
+    </select>
+  </div>
 </nav>
 
 <div class="body">

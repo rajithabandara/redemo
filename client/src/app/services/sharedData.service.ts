@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
@@ -12,6 +12,7 @@ export class SharedService {
     JSON.stringify(this.translationData)
   );
   sharedMessage = this.centerTranslationData.asObservable();
+  themePublished = new EventEmitter<number>();
 
   constructor() {}
 
