@@ -32,6 +32,19 @@ export class ReportEngineComponent implements OnInit {
       '#reportArea'
     );
 
+    console.log(
+      'centering - ' + this.zoomPercentage + ' % ' + this.zoomPercentage * 100
+    );
+
+    let zoomedViewableAreaWidth = this.viewableAreaWidth * this.zoomPercentage;
+
+    let zoomedViewableAreaHeight =
+      this.viewableAreaHeight * this.zoomPercentage;
+
+    this.zoomedViewableAreaWidth = zoomedViewableAreaWidth;
+
+    this.zoomedViewableAreaHeight = zoomedViewableAreaHeight;
+
     this.translateAttribute = this.getCenterTranslation(
       reportArea.getBBox(),
       this.zoomedViewableAreaWidth,
@@ -40,8 +53,6 @@ export class ReportEngineComponent implements OnInit {
 
     let translationData = {
       translateAttribute: this.translateAttribute,
-      viewableAreaHeight: this.zoomedViewableAreaHeight,
-      viewableAreaWidth: this.zoomedViewableAreaWidth,
       viewBoxAttribute: this.viewBoxAttribute,
     };
 
@@ -54,11 +65,9 @@ export class ReportEngineComponent implements OnInit {
     let reportArea: any = this.hostElement.nativeElement.querySelector(
       '#reportArea'
     );
-
     this.zoomPercentage = this.zoomPercentage + 0.25;
-    console.log(this.zoomPercentage);
-
-    if (this.zoomPercentage < 2) {
+    if (this.zoomPercentage <= 2) {
+      console.log(this.zoomPercentage + ' % ' + this.zoomPercentage * 100);
       let zoomedViewableAreaWidth =
         this.viewableAreaWidth * this.zoomPercentage;
 
@@ -89,7 +98,7 @@ export class ReportEngineComponent implements OnInit {
       );
     } else {
       this.zoomPercentage = 2;
-      console.log('zoom ut limit exeed');
+      console.log('zoom out limit exeed ' + this.zoomPercentage);
     }
   }
 
@@ -97,10 +106,9 @@ export class ReportEngineComponent implements OnInit {
     let reportArea: any = this.hostElement.nativeElement.querySelector(
       '#reportArea'
     );
-
     this.zoomPercentage = this.zoomPercentage - 0.25;
-    console.log(this.zoomPercentage);
     if (this.zoomPercentage >= 0.5) {
+      console.log(this.zoomPercentage + ' % ' + this.zoomPercentage * 100);
       let zoomedViewableAreaWidth =
         this.viewableAreaWidth * this.zoomPercentage;
 
@@ -126,24 +134,25 @@ export class ReportEngineComponent implements OnInit {
       );
     } else {
       this.zoomPercentage = 0.5;
-      console.log('zoom in limit exeed');
+
+      console.log('zoom in limit exeed ' + this.zoomPercentage);
     }
   }
 
-  getViewableAreaDimesion(svgViewableArea: any) {
-    let boundryBox = svgViewableArea.getBoundingClientRect();
+  // getViewableAreaDimesion(svgViewableArea: any) {
+  //   let boundryBox = svgViewableArea.getBoundingClientRect();
 
-    let viewableAreaHeight = boundryBox.height;
-    let viewableAreaWidth = boundryBox.width;
-    return { viewableAreaHeight, viewableAreaWidth };
-  }
+  //   let viewableAreaHeight = boundryBox.height;
+  //   let viewableAreaWidth = boundryBox.width;
+  //   return { viewableAreaHeight, viewableAreaWidth };
+  // }
 
   getCenterTranslation(
     reportBoundryBox: any,
     viewableAreaWidth: number,
     viewableAreaHeight: number
   ): string {
-    console.log(reportBoundryBox);
+    // console.log(reportBoundryBox);
 
     reportBoundryBox = reportBoundryBox;
 
@@ -154,23 +163,5 @@ export class ReportEngineComponent implements OnInit {
     let differanceY = viewableAreaHeight / 2 - reportCenterY;
 
     return `translate (${differanceX},${differanceY})`;
-  }
-
-  getCenterTranslationValues(
-    reportBoundryBox: any,
-    viewableAreaWidth: number,
-    viewableAreaHeight: number
-  ): any {
-    console.log(reportBoundryBox);
-
-    reportBoundryBox = reportBoundryBox;
-
-    let reportCenterX = reportBoundryBox.width / 2 + reportBoundryBox.x;
-    let reportCenterY = reportBoundryBox.height / 2 + reportBoundryBox.y;
-
-    let differanceX = viewableAreaWidth / 2 - reportCenterX;
-    let differanceY = viewableAreaHeight / 2 - reportCenterY;
-
-    return { differanceX, differanceY };
   }
 }

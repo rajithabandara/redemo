@@ -18,7 +18,7 @@ export class Rectangle1Component implements OnInit, OnDestroy {
 
   constructor(private sharedService: SharedService) {}
   ngOnDestroy(): void {
-    console.log('unsubscribe');
+    console.log('unsubscribed');
     this.sharedServiceObservable.unsubscribe();
   }
   ngOnInit(): void {
@@ -29,8 +29,6 @@ export class Rectangle1Component implements OnInit, OnDestroy {
         let translationData = JSON.parse(translationDataStr);
 
         this.translateAttribute = translationData.translateAttribute;
-        this.viewableAreaWidth = translationData.viewableAreaWidth;
-        this.viewableAreaHeight = translationData.viewableAreaHeight;
         this.viewBoxAttribute = translationData.viewBoxAttribute;
       }
     );
