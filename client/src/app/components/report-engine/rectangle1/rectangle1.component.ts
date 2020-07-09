@@ -14,7 +14,6 @@ export class Rectangle1Component implements OnInit, OnDestroy {
   sharedServiceObservable: any;
   sharedServiceObservableZoom: any;
 
-  zoom = 1;
 
   constructor(private sharedService: SharedService) {}
   ngOnDestroy(): void {
@@ -27,7 +26,8 @@ export class Rectangle1Component implements OnInit, OnDestroy {
         console.log(translationDataStr);
 
         let translationData = JSON.parse(translationDataStr);
-
+        this.viewableAreaWidth = translationData.viewableAreaWidth;
+        this.viewableAreaHeight = translationData.viewableAreaHeight;
         this.translateAttribute = translationData.translateAttribute;
         this.viewBoxAttribute = translationData.viewBoxAttribute;
       }
