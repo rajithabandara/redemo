@@ -15,10 +15,13 @@ export class ReportEngineComponent {
   private _zoomedViewableAreaHeight = 1500;
   public zoomPercentage = 1;
 
+  private _maxZoomLevel = 2; //percentage 200%
+  private _minZoomLevel = 0.5 //percentage 50%
+
   constructor(
     private hostElement: ElementRef,
     private sharedService: SharedService
-  ) {}
+  ) { }
 
   //Align all items on center
   center() {
@@ -69,7 +72,9 @@ export class ReportEngineComponent {
       this.zoomPercentage = this.zoomPercentage + 0.25;
     }
 
-    if (this.zoomPercentage <= 2 && this.zoomPercentage >= 0.5) {
+    if (this.zoomPercentage <= this._maxZoomLevel
+      && this.zoomPercentage >= this._minZoomLevel) {
+
       console.log(this.zoomPercentage + ' % ' + this.zoomPercentage * 100);
       let zoomedViewableAreaWidth =
         this._viewableAreaWidth * this.zoomPercentage;
