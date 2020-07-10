@@ -14,6 +14,7 @@ export class ReportEngineComponent {
   private _zoomedViewableAreaWidth = 1500;
   private _zoomedViewableAreaHeight = 1500;
   public zoomPercentage = 1;
+  RoundedValue: number = Math.round(100/this.zoomPercentage);
 
   constructor(
     private hostElement: ElementRef,
@@ -65,8 +66,10 @@ export class ReportEngineComponent {
 
     if (isZoomIn) {
       this.zoomPercentage = this.zoomPercentage - 0.25;
+      this.RoundedValue = Math.round(100/this.zoomPercentage);
     } else {
       this.zoomPercentage = this.zoomPercentage + 0.25;
+      this.RoundedValue = Math.round(100/this.zoomPercentage);
     }
 
     if (this.zoomPercentage <= 2 && this.zoomPercentage >= 0.5) {
@@ -102,9 +105,11 @@ export class ReportEngineComponent {
     } else {
       if (isZoomIn) {
         this.zoomPercentage = 0.5;
+        this.RoundedValue = Math.round(100/this.zoomPercentage);
         console.log('zoom out limit exeed ' + this.zoomPercentage);
       } else {
         this.zoomPercentage = 2;
+        this.RoundedValue = Math.round(100/this.zoomPercentage);
         console.log('zoom in limit exeed ' + this.zoomPercentage);
       }
     }
