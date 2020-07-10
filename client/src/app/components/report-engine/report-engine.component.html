@@ -1,6 +1,10 @@
 <div class="maindiv">
-  <a (click)="zoomIn()"> <img class="fltbtns" src="../assets/add.svg" /></a>
-  <a (click)="zoomOut()"> <img class="fltbtns1" src="../assets/minus.svg" /></a>
+  <!-- <a (click)="zoomIn()"> <img class="fltbtns" src="../assets/add.svg" /></a>
+  <a (click)="zoomOut()"> <img class="fltbtns1" src="../assets/minus.svg" /></a> -->
+  <a (click)="zoom(true)"> <img class="fltbtns" src="../assets/add.svg" /></a>
+  <a (click)="zoom(false)">
+    <img class="fltbtns1" src="../assets/minus.svg"
+  /></a>
   <a (click)="center()"> <img class="fltbtns2" src="../assets/focus.svg" /></a>
   <div class="zoomlevel">zoom level:{{  RoundedValue}}%</div>
   <router-outlet></router-outlet>

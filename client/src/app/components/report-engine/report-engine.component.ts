@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { SharedService } from '../../services/sharedData.service';
 
 @Component({
@@ -6,27 +6,21 @@ import { SharedService } from '../../services/sharedData.service';
   templateUrl: './report-engine.component.html',
   styleUrls: ['./report-engine.component.css'],
 })
-export class ReportEngineComponent implements OnInit {
-  param: any;
-  translateAttribute = ``;
-  viewableAreaWidth: number = 1500;
-  viewableAreaHeight: number = 1500;
-  toggle: boolean = false;
-  viewBoxAttribute = `0 0 1500 1500`;
-  zoomedViewableAreaWidth = 1500;
-  zoomedViewableAreaHeight = 1500;
-  zoomPercentage = 1;
-  RoundedValue: number = Math.round(100/this.zoomPercentage);
+export class ReportEngineComponent {
+  private _translateAttribute = ``;
+  private _viewableAreaWidth: number = 1500;
+  private _viewableAreaHeight: number = 1500;
+  private _viewBoxAttribute = `0 0 1500 1500`;
+  private _zoomedViewableAreaWidth = 1500;
+  private _zoomedViewableAreaHeight = 1500;
+  public zoomPercentage = 1;
+
   constructor(
     private hostElement: ElementRef,
     private sharedService: SharedService
-  ) {
-    this.toggle = false;
-  }
-  ngOnInit(): void {
-    this.center();
-  }
+  ) {}
 
+  //Align all items on center
   center() {
     let reportArea: any = this.hostElement.nativeElement.querySelector(
       '#reportArea'
@@ -36,24 +30,26 @@ export class ReportEngineComponent implements OnInit {
       'centering - ' + this.zoomPercentage + ' % ' + this.zoomPercentage * 100
     );
 
-    let zoomedViewableAreaWidth = this.viewableAreaWidth * this.zoomPercentage;
+    let zoomedViewableAreaWidth = this._viewableAreaWidth * this.zoomPercentage;
 
     let zoomedViewableAreaHeight =
-      this.viewableAreaHeight * this.zoomPercentage;
+      this._viewableAreaHeight * this.zoomPercentage;
 
-    this.zoomedViewableAreaWidth = zoomedViewableAreaWidth;
+    this._zoomedViewableAreaWidth = zoomedViewableAreaWidth;
 
-    this.zoomedViewableAreaHeight = zoomedViewableAreaHeight;
+    this._zoomedViewableAreaHeight = zoomedViewableAreaHeight;
 
-    this.translateAttribute = this.getCenterTranslation(
+    this._translateAttribute = this.getCenterTranslation(
       reportArea.getBBox(),
-      this.zoomedViewableAreaWidth,
-      this.zoomedViewableAreaHeight
+      this._zoomedViewableAreaWidth,
+      this._zoomedViewableAreaHeight
     );
 
     let translationData = {
-      translateAttribute: this.translateAttribute,
-      viewBoxAttribute: this.viewBoxAttribute,
+      viewableAreaHeight: zoomedViewableAreaHeight,
+      viewableAreaWidth: zoomedViewableAreaWidth,
+      translateAttribute: this._translateAttribute,
+      viewBoxAttribute: this._viewBoxAttribute,
     };
 
     let translationDataStr = JSON.stringify(translationData);
@@ -61,27 +57,33 @@ export class ReportEngineComponent implements OnInit {
     this.sharedService.emmitTranslationString(translationDataStr);
   }
 
-  zoomOut() {
+  //Zoom logic based on boolean (e.g. IsZoomIn = true)
+  zoom(isZoomIn: boolean) {
     let reportArea: any = this.hostElement.nativeElement.querySelector(
       '#reportArea'
     );
-    this.zoomPercentage = this.zoomPercentage + 0.25;
-    this.RoundedValue = Math.round(100/this.zoomPercentage);
-    if (this.zoomPercentage <= 2) {
+
+    if (isZoomIn) {
+      this.zoomPercentage = this.zoomPercentage - 0.25;
+    } else {
+      this.zoomPercentage = this.zoomPercentage + 0.25;
+    }
+
+    if (this.zoomPercentage <= 2 && this.zoomPercentage >= 0.5) {
       console.log(this.zoomPercentage + ' % ' + this.zoomPercentage * 100);
       let zoomedViewableAreaWidth =
-        this.viewableAreaWidth * this.zoomPercentage;
+        this._viewableAreaWidth * this.zoomPercentage;
 
       let zoomedViewableAreaHeight =
-        this.viewableAreaHeight * this.zoomPercentage;
+        this._viewableAreaHeight * this.zoomPercentage;
 
-      this.zoomedViewableAreaWidth = zoomedViewableAreaWidth;
+      this._zoomedViewableAreaWidth = zoomedViewableAreaWidth;
 
-      this.zoomedViewableAreaHeight = zoomedViewableAreaHeight;
+      this._zoomedViewableAreaHeight = zoomedViewableAreaHeight;
 
-      this.viewBoxAttribute = `0 0 ${zoomedViewableAreaWidth} ${zoomedViewableAreaHeight}`;
+      this._viewBoxAttribute = `0 0 ${zoomedViewableAreaWidth} ${zoomedViewableAreaHeight}`;
 
-      this.translateAttribute = this.getCenterTranslation(
+      this._translateAttribute = this.getCenterTranslation(
         reportArea.getBBox(),
         zoomedViewableAreaWidth,
         zoomedViewableAreaHeight
@@ -90,59 +92,25 @@ export class ReportEngineComponent implements OnInit {
       let zoomTranslationData = {
         viewableAreaHeight: zoomedViewableAreaHeight,
         viewableAreaWidth: zoomedViewableAreaWidth,
-        viewBoxAttribute: this.viewBoxAttribute,
-        translateAttribute: this.translateAttribute,
+        viewBoxAttribute: this._viewBoxAttribute,
+        translateAttribute: this._translateAttribute,
       };
 
       this.sharedService.emmitZoomViewBoxString(
         JSON.stringify(zoomTranslationData)
       );
     } else {
-      this.zoomPercentage = 2;
-      this.RoundedValue = Math.round(100/this.zoomPercentage);
-      console.log('zoom out limit exeed ' + this.zoomPercentage);
+      if (isZoomIn) {
+        this.zoomPercentage = 0.5;
+        console.log('zoom out limit exeed ' + this.zoomPercentage);
+      } else {
+        this.zoomPercentage = 2;
+        console.log('zoom in limit exeed ' + this.zoomPercentage);
+      }
     }
   }
 
-  zoomIn() {
-    let reportArea: any = this.hostElement.nativeElement.querySelector(
-      '#reportArea'
-    );
-    this.zoomPercentage = this.zoomPercentage - 0.25;
-    this.RoundedValue = Math.round(100/this.zoomPercentage);
-    if (this.zoomPercentage >= 0.5) {
-      console.log(this.zoomPercentage + ' % ' + this.zoomPercentage * 100);
-      let zoomedViewableAreaWidth =
-        this.viewableAreaWidth * this.zoomPercentage;
-
-      let zoomedViewableAreaHeight =
-        this.viewableAreaHeight * this.zoomPercentage;
-
-      this.viewBoxAttribute = `0 0 ${zoomedViewableAreaWidth} ${zoomedViewableAreaHeight}`;
-
-      this.translateAttribute = this.getCenterTranslation(
-        reportArea.getBBox(),
-        zoomedViewableAreaWidth,
-        zoomedViewableAreaHeight
-      );
-
-      let zoomTranslationData = {
-        viewableAreaHeight: zoomedViewableAreaHeight,
-        viewableAreaWidth: zoomedViewableAreaWidth,
-        viewBoxAttribute: this.viewBoxAttribute,
-        translateAttribute: this.translateAttribute,
-      };
-      this.sharedService.emmitZoomViewBoxString(
-        JSON.stringify(zoomTranslationData)
-      );
-    } else {
-      this.zoomPercentage = 0.5;
-      this.RoundedValue = Math.round(100/this.zoomPercentage);
-
-      console.log('zoom in limit exeed ' + this.zoomPercentage);
-    }
-  }
-
+  // Commented for future references
   // getViewableAreaDimesion(svgViewableArea: any) {
   //   let boundryBox = svgViewableArea.getBoundingClientRect();
 
