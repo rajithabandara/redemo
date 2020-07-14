@@ -8,7 +8,6 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./rectangle1.component.css'],
 })
 export class Rectangle1Component implements OnInit, OnDestroy {
-
   //Varable Declaration
   translateAttribute = ``;
   viewableAreaWidth = 500;
@@ -21,23 +20,27 @@ export class Rectangle1Component implements OnInit, OnDestroy {
   private _sharedServiceObservable: any;
   private _themePublishedSub: any;
 
-  constructor(private _sharedService: SharedService,
-              private sanitizer: DomSanitizer) { }
+  constructor(
+    private _sharedService: SharedService,
+    private sanitizer: DomSanitizer
+  ) {}
 
+  sharedServiceObservableResize: any;
+  sharedServiceObservablePan: any;
 
   ngOnDestroy(): void {
     console.log('unsubscribed');
     this._sharedService.contentReset.emit();
     this._sharedServiceObservable.unsubscribe();
 
-    this.sharedServiceObservableZoom.unsubscribe();   
+    this.sharedServiceObservableZoom.unsubscribe();
     if (this._themePublishedSub) {
       this._themePublishedSub.unsubscribe();
     }
   }
-  ngOnInit(): void {  
-    this.registerEvent();
-   // this._sharedServiceObservable = this._sharedService.sharedMessage.subscribe(
+  ngOnInit(): void {
+    // this.registerEvent();
+    // this._sharedServiceObservable = this._sharedService.sharedMessage.subscribe(
     //   (translationDataStr) => {
     //     console.log(translationDataStr);
 
@@ -66,7 +69,7 @@ export class Rectangle1Component implements OnInit, OnDestroy {
       (translationDataStr) => {
         console.log(translationDataStr);
 
-          let translationData = JSON.parse(translationDataStr);
+        let translationData = JSON.parse(translationDataStr);
         this.viewableAreaWidth = translationData.viewableAreaWidth;
         this.viewableAreaHeight = translationData.viewableAreaHeight;
         this.translateAttribute = translationData.translateAttribute;
@@ -87,25 +90,32 @@ export class Rectangle1Component implements OnInit, OnDestroy {
       }
     );
 
-    //Default theme load
-    this.loadStyle(3);
-  }
+    this.sharedServiceObservableResize = this._sharedService.resizeSharedMessage.subscribe(
+      (resizeData) => {
+        console.log(resizeData);
 
-  private registerEvent() {
-    this._themePublishedSub = this._sharedService.themePublished.subscribe((themeId: number) => {
-      this.loadStyle(themeId);
-    });
-  }
+        let resizeDataObj = JSON.parse(resizeData);
 
-  private loadStyle(themeId: number) {
-    if (themeId == 1) {
-      this._cssUrl = '../assets/report1/reportred.css';
-    } else if (themeId == 2) {
-      this._cssUrl = '../assets/report1/reportblue.css';
-    } else if (themeId == 3) {
-      this._cssUrl = '../assets/report1/reportblack.css';
-    }
-    //Dynamic Url has to be safe with sanitizer
-    this.dynamicCSSUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this._cssUrl);
+        // this.translateAttribute = resizeDataObj.translateAttribute;
+        this.viewBoxAttribute = resizeDataObj.viewBoxAttribute;
+        this.viewableAreaWidth = resizeDataObj.viewableAreaWidth;
+        this.viewableAreaHeight = resizeDataObj.viewableAreaHeight;
+      }
+    );
+
+    this.sharedServiceObservablePan = this._sharedService.panSharedMessage.subscribe(
+      (panData) => {
+        console.log(panData);
+
+        let panDataObj = JSON.parse(panData);
+
+        // this.translateAttribute = resizeDataObj.translateAttribute;
+        this.viewBoxAttribute = panDataObj.viewBoxAttribute; //panDataObj.viewBoxAttribute;
+        // this.viewableAreaWidth = panDataObj.viewableAreaWidth;
+        // this.viewableAreaHeight = panDataObj.viewableAreaHeight;
+      }
+    );
+
+    this._sharedService.contentRefresh.emit();
   }
 }

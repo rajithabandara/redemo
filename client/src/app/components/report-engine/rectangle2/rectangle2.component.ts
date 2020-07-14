@@ -65,6 +65,8 @@ export class Rectangle2Component implements OnInit, OnDestroy {
         this.viewableAreaHeight = zoomdataObj.viewableAreaHeight;
       }
     );
+
+    this.sharedService.contentRefresh.emit();
   }
 
   private loadStyle(themeId: number) {
