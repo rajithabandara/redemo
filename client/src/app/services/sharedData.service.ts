@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
@@ -14,7 +14,12 @@ export class SharedService {
     viewableAreaHeight: 0,
     viewableAreaWidth: 0,
   };
-  constructor() {}
+  
+  contentZoomed = new EventEmitter<string>();
+  contentReset = new EventEmitter<boolean>();
+  contentCentered = new EventEmitter<string>();
+
+  constructor() { }
 
   private centerTranslationData = new BehaviorSubject(
     JSON.stringify(this.translationData)
@@ -34,5 +39,26 @@ export class SharedService {
 
   emmitZoomViewBoxString(zoomViewBoxData: string) {
     this.zoomViewBoxAtttributeData.next(zoomViewBoxData);
+  }
+
+  reset() {
+    this.translationData = {
+      translateAttribute: '',
+      viewableAreaHeight: 0,
+      viewableAreaWidth: 0,
+    };
+
+    let translationCenterDataStr = JSON.stringify(this.translationData);
+    this.emmitTranslationString(translationCenterDataStr)
+
+    this.zoomViewBoxData = {
+      viewBoxAttribute: `0 0 1500 1500`,
+      viewableAreaHeight: 0,
+      viewableAreaWidth: 0,
+    };
+
+    let translationZoomDataStr = JSON.stringify(this.zoomViewBoxData);
+    //this.emmitZoomViewBoxString(translationZoomDataStr)
+    this.contentZoomed.emit(translationZoomDataStr);
   }
 }

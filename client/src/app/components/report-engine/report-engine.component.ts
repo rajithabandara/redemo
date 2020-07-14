@@ -1,4 +1,4 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, OnInit, OnDestroy } from '@angular/core';
 import { SharedService } from '../../services/sharedData.service';
 
 @Component({
@@ -6,23 +6,36 @@ import { SharedService } from '../../services/sharedData.service';
   templateUrl: './report-engine.component.html',
   styleUrls: ['./report-engine.component.css'],
 })
-export class ReportEngineComponent {
+export class ReportEngineComponent implements OnInit, OnDestroy {
+
+  //Variable Declaration
   private _translateAttribute = ``;
   private _viewableAreaWidth: number = 1500;
   private _viewableAreaHeight: number = 1500;
   private _viewBoxAttribute = `0 0 1500 1500`;
   private _zoomedViewableAreaWidth = 1500;
   private _zoomedViewableAreaHeight = 1500;
-  public zoomPercentage = 1;
-  RoundedValue: number = Math.round(100/this.zoomPercentage);
-
+  private _contentResetSub: any;
   private _maxZoomLevel = 2; //percentage 200%
-  private _minZoomLevel = 0.5 //percentage 50%
+  private _minZoomLevel = 0.5 //percentage 50%  
+
+  public zoomPercentage = 1;
+  public roundedValue: number = Math.round(100 / this.zoomPercentage);
 
   constructor(
     private hostElement: ElementRef,
     private sharedService: SharedService
   ) { }
+
+  ngOnInit(): void {
+    this.registerEvent();
+  }
+
+  ngOnDestroy(): void {
+    if (this._contentResetSub) {
+      this._contentResetSub.unsubscribe();
+    }
+  }
 
   //Align all items on center
   center() {
@@ -58,7 +71,8 @@ export class ReportEngineComponent {
 
     let translationDataStr = JSON.stringify(translationData);
 
-    this.sharedService.emmitTranslationString(translationDataStr);
+    //this.sharedService.emmitTranslationString(translationDataStr);
+    this.sharedService.contentCentered.emit(translationDataStr);
   }
 
   //Zoom logic based on boolean (e.g. IsZoomIn = true)
@@ -69,10 +83,10 @@ export class ReportEngineComponent {
 
     if (isZoomIn) {
       this.zoomPercentage = this.zoomPercentage - 0.25;
-      this.RoundedValue = Math.round(100/this.zoomPercentage);
+      this.roundedValue = Math.round(100 / this.zoomPercentage);
     } else {
       this.zoomPercentage = this.zoomPercentage + 0.25;
-      this.RoundedValue = Math.round(100/this.zoomPercentage);
+      this.roundedValue = Math.round(100 / this.zoomPercentage);
     }
 
     if (this.zoomPercentage <= this._maxZoomLevel
@@ -104,21 +118,39 @@ export class ReportEngineComponent {
         translateAttribute: this._translateAttribute,
       };
 
-      this.sharedService.emmitZoomViewBoxString(
-        JSON.stringify(zoomTranslationData)
-      );
+      // this.sharedService.emmitZoomViewBoxString(
+      //   JSON.stringify(zoomTranslationData)
+      // );
+
+      this.sharedService.contentZoomed.emit(JSON.stringify(zoomTranslationData))
     } else {
       if (isZoomIn) {
         this.zoomPercentage = 0.5;
-        this.RoundedValue = Math.round(100/this.zoomPercentage);
+        this.roundedValue = Math.round(100 / this.zoomPercentage);
         console.log('zoom out limit exeed ' + this.zoomPercentage);
       } else {
         this.zoomPercentage = 2;
-        this.RoundedValue = Math.round(100/this.zoomPercentage);
+        this.roundedValue = Math.round(100 / this.zoomPercentage);
         console.log('zoom in limit exeed ' + this.zoomPercentage);
       }
     }
   }
+
+  
+  registerEvent() {
+    //Reset common event subscriber
+    this._contentResetSub = this.sharedService.contentReset.subscribe(() => {
+      this._translateAttribute = ``;
+      this._viewableAreaWidth = 1500;
+      this._viewableAreaHeight = 1500;
+      this._viewBoxAttribute = `0 0 1500 1500`;
+      this._zoomedViewableAreaWidth = 1500;
+      this._zoomedViewableAreaHeight = 1500;
+      this.zoomPercentage = 1;
+      this.roundedValue = Math.round(100 / this.zoomPercentage);
+    });
+  }
+
 
   // Commented for future references
   // getViewableAreaDimesion(svgViewableArea: any) {

@@ -17,9 +17,22 @@ export class Rectangle2Component implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     console.log('unsubscribe');
     this.sharedServiceObservable.unsubscribe();
+    this.sharedService.contentReset.emit();
   }
   ngOnInit(): void {
-    this.sharedServiceObservable = this.sharedService.sharedMessage.subscribe(
+    // this.sharedServiceObservable = this.sharedService.sharedMessage.subscribe(
+    //   (translationDataStr) => {
+    //     console.log(translationDataStr);
+
+    //     let translationData = JSON.parse(translationDataStr);
+
+    //     this.translateAttribute = translationData.translateAttribute;
+    //     this.viewableAreaWidth = translationData.viewableAreaWidth;
+    //     this.viewableAreaHeight = translationData.viewableAreaHeight;
+    //   }
+    // );
+
+    this.sharedServiceObservable = this.sharedService.contentCentered.subscribe(
       (translationDataStr) => {
         console.log(translationDataStr);
 
