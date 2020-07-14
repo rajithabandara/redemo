@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { SharedService } from '../../../services/sharedData.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-rectangle2',
@@ -7,41 +8,74 @@ import { SharedService } from '../../../services/sharedData.service';
   styleUrls: ['./rectangle2.component.css'],
 })
 export class Rectangle2Component implements OnInit, OnDestroy {
-  translateAttribute = ``;
-  viewableAreaWidth = 0;
-  viewableAreaHeight = 0;
+   //Varable Declaration
+   translateAttribute = ``;
+   viewableAreaWidth = 500;
+   viewableAreaHeight = 500;
+   viewBoxAttribute = `0 0 1500 1500`;
+   dynamicCSSUrl: any;
+   sharedServiceObservableZoom: any;
+ 
+   public _cssUrl: string;
+   private _sharedServiceObservable: any;
+   private _themePublishedSub: any;
 
-  sharedServiceObservable: any;
+  constructor(private _sharedService: SharedService,private sanitizer: DomSanitizer) {}
 
-  constructor(private sharedService: SharedService) {}
   ngOnDestroy(): void {
     console.log('unsubscribe');
-    this.sharedServiceObservable.unsubscribe();
-    this.sharedService.contentReset.emit();
+    this._sharedServiceObservable.unsubscribe();
+    this._themePublishedSub.unsubscribe();
+    this.sharedServiceObservableZoom.unsubscribe();
+    this._sharedService.contentReset.emit();
   }
   ngOnInit(): void {
-    // this.sharedServiceObservable = this.sharedService.sharedMessage.subscribe(
-    //   (translationDataStr) => {
-    //     console.log(translationDataStr);
+    this.registerEvent(); 
+    //Default theme load
+    this.loadStyle(3);
+  }
 
-    //     let translationData = JSON.parse(translationDataStr);
+  
+  private registerEvent() {
+    this._themePublishedSub = this._sharedService.themePublished.subscribe((themeId: number) => {
+      this.loadStyle(themeId);
+    });
 
-    //     this.translateAttribute = translationData.translateAttribute;
-    //     this.viewableAreaWidth = translationData.viewableAreaWidth;
-    //     this.viewableAreaHeight = translationData.viewableAreaHeight;
-    //   }
-    // );
-
-    this.sharedServiceObservable = this.sharedService.contentCentered.subscribe(
+    this._sharedServiceObservable = this._sharedService.contentCentered.subscribe(
       (translationDataStr) => {
         console.log(translationDataStr);
 
-        let translationData = JSON.parse(translationDataStr);
-
-        this.translateAttribute = translationData.translateAttribute;
+          let translationData = JSON.parse(translationDataStr);
         this.viewableAreaWidth = translationData.viewableAreaWidth;
         this.viewableAreaHeight = translationData.viewableAreaHeight;
+        this.translateAttribute = translationData.translateAttribute;
+        this.viewBoxAttribute = translationData.viewBoxAttribute;
       }
     );
+
+    this.sharedServiceObservableZoom = this._sharedService.contentZoomed.subscribe(
+      (zoomdata) => {
+        console.log(zoomdata);
+
+        let zoomdataObj = JSON.parse(zoomdata);
+
+        this.translateAttribute = zoomdataObj.translateAttribute;
+        this.viewBoxAttribute = zoomdataObj.viewBoxAttribute;
+        this.viewableAreaWidth = zoomdataObj.viewableAreaWidth;
+        this.viewableAreaHeight = zoomdataObj.viewableAreaHeight;
+      }
+    );
+  }
+
+  private loadStyle(themeId: number) {
+    if (themeId == 1) {
+      this._cssUrl = '../assets/report1/reportred.css';
+    } else if (themeId == 2) {
+      this._cssUrl = '../assets/report1/reportblue.css';
+    } else if (themeId == 3) {
+      this._cssUrl = '../assets/report1/reportblack.css';
+    }
+    //Dynamic Url has to be safe with sanitizer
+    this.dynamicCSSUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this._cssUrl);
   }
 }

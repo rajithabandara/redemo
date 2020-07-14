@@ -24,10 +24,10 @@ export class Rectangle1Component implements OnInit, OnDestroy {
   constructor(private _sharedService: SharedService,
               private sanitizer: DomSanitizer) { }
 
-  constructor(private sharedService: SharedService) { }
+
   ngOnDestroy(): void {
     console.log('unsubscribed');
-    this.sharedService.contentReset.emit();
+    this._sharedService.contentReset.emit();
     this._sharedServiceObservable.unsubscribe();
 
     this.sharedServiceObservableZoom.unsubscribe();   
@@ -37,7 +37,7 @@ export class Rectangle1Component implements OnInit, OnDestroy {
   }
   ngOnInit(): void {  
     this.registerEvent();
-    this._sharedServiceObservable = this._sharedService.sharedMessage.subscribe(
+   // this._sharedServiceObservable = this._sharedService.sharedMessage.subscribe(
     //   (translationDataStr) => {
     //     console.log(translationDataStr);
 
@@ -62,7 +62,7 @@ export class Rectangle1Component implements OnInit, OnDestroy {
     //   }
     // );
 
-    this.sharedServiceObservable = this.sharedService.contentCentered.subscribe(
+    this._sharedServiceObservable = this._sharedService.contentCentered.subscribe(
       (translationDataStr) => {
         console.log(translationDataStr);
 
@@ -74,7 +74,7 @@ export class Rectangle1Component implements OnInit, OnDestroy {
       }
     );
 
-    this.sharedServiceObservableZoom = this.sharedService.contentZoomed.subscribe(
+    this.sharedServiceObservableZoom = this._sharedService.contentZoomed.subscribe(
       (zoomdata) => {
         console.log(zoomdata);
 
