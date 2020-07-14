@@ -1,9 +1,7 @@
 <svg id="svgViewableArea" [attr.viewBox]="viewBoxAttribute" class="svgfull">
-  <circle
-    [attr.cx]="viewableAreaWidth / 2"
-    [attr.cy]="viewableAreaHeight / 2"
-    r="10"
-  ></circle>
+<link  type="text/css" rel="stylesheet"
+  [href]='dynamicCSSUrl'>
+ 
   <g id="reportArea" [attr.transform]="translateAttribute">
     <!-- <circle cx="100" cy="300" r="40"></circle> -->
     <!-- <image
@@ -19,12 +17,10 @@
       href="assets/report-engine-assets/photo.svg"
       transform="translate( 800 , 1800 )"
     /> -->
-    <rect
-      x="100"
-      y="300"
-      width="500"
-      height="500"
-      style="fill: rgba(0, 0, 0, 0.5); stroke-width: 3; stroke: rgb(0, 0, 0);"
-    />
+    
+     <rect x="100" y="300" width="500" height="500" class="rectangle" />
+    <text x="100" y="280" class="textVal" >This is rectangle</text>
+
   </g>
+  <circle class="circleval" [attr.cx]="viewableAreaWidth / 2" [attr.cy]="viewableAreaHeight / 2" r="10"></circle>
 </svg>

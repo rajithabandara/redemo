@@ -30,6 +30,7 @@ export class SharedService {
   );
 
   sharedMessage = this.centerTranslationData.asObservable();
+  themePublished = new EventEmitter<number>();
 
   zoomSharedMessage = this.zoomViewBoxAtttributeData.asObservable();
 
