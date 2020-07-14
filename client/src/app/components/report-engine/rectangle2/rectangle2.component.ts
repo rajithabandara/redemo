@@ -8,19 +8,22 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./rectangle2.component.css'],
 })
 export class Rectangle2Component implements OnInit, OnDestroy {
-   //Varable Declaration
-   translateAttribute = ``;
-   viewableAreaWidth = 500;
-   viewableAreaHeight = 500;
-   viewBoxAttribute = `0 0 1500 1500`;
-   dynamicCSSUrl: any;
-   sharedServiceObservableZoom: any;
- 
-   public _cssUrl: string;
-   private _sharedServiceObservable: any;
-   private _themePublishedSub: any;
+  //Varable Declaration
+  translateAttribute = ``;
+  viewableAreaWidth = 500;
+  viewableAreaHeight = 500;
+  viewBoxAttribute = `0 0 1500 1500`;
+  dynamicCSSUrl: any;
+  sharedServiceObservableZoom: any;
 
-  constructor(private _sharedService: SharedService,private sanitizer: DomSanitizer) {}
+  public _cssUrl: string;
+  private _sharedServiceObservable: any;
+  private _themePublishedSub: any;
+
+  constructor(
+    private _sharedService: SharedService,
+    private sanitizer: DomSanitizer
+  ) {}
 
   ngOnDestroy(): void {
     console.log('unsubscribe');
@@ -30,22 +33,23 @@ export class Rectangle2Component implements OnInit, OnDestroy {
     this._sharedService.contentReset.emit();
   }
   ngOnInit(): void {
-    this.registerEvent(); 
+    this.registerEvent();
     //Default theme load
     this.loadStyle(3);
   }
 
-  
   private registerEvent() {
-    this._themePublishedSub = this._sharedService.themePublished.subscribe((themeId: number) => {
-      this.loadStyle(themeId);
-    });
+    this._themePublishedSub = this._sharedService.themePublished.subscribe(
+      (themeId: number) => {
+        this.loadStyle(themeId);
+      }
+    );
 
     this._sharedServiceObservable = this._sharedService.contentCentered.subscribe(
       (translationDataStr) => {
         console.log(translationDataStr);
 
-          let translationData = JSON.parse(translationDataStr);
+        let translationData = JSON.parse(translationDataStr);
         this.viewableAreaWidth = translationData.viewableAreaWidth;
         this.viewableAreaHeight = translationData.viewableAreaHeight;
         this.translateAttribute = translationData.translateAttribute;
@@ -66,7 +70,7 @@ export class Rectangle2Component implements OnInit, OnDestroy {
       }
     );
 
-    this.sharedService.contentRefresh.emit();
+    this._sharedService.contentRefresh.emit();
   }
 
   private loadStyle(themeId: number) {
@@ -78,6 +82,8 @@ export class Rectangle2Component implements OnInit, OnDestroy {
       this._cssUrl = '../assets/report1/reportblack.css';
     }
     //Dynamic Url has to be safe with sanitizer
-    this.dynamicCSSUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this._cssUrl);
+    this.dynamicCSSUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+      this._cssUrl
+    );
   }
 }
