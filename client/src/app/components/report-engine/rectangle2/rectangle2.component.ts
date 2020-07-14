@@ -43,5 +43,7 @@ export class Rectangle2Component implements OnInit, OnDestroy {
         this.viewableAreaHeight = translationData.viewableAreaHeight;
       }
     );
+
+    this.sharedService.contentRefresh.emit();
   }
 }

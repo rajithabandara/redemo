@@ -30,6 +30,7 @@ export class SharedService {
   contentZoomed = new EventEmitter<string>();
   contentReset = new EventEmitter<boolean>();
   contentCentered = new EventEmitter<string>();
+  contentRefresh = new EventEmitter<boolean>();
 
   constructor() {}
 

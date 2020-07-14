@@ -22,6 +22,7 @@ export class ReportEngineComponent implements OnInit, OnDestroy, AfterViewInit {
   private _zoomedViewableAreaWidth = 1500;
   private _zoomedViewableAreaHeight = 1500;
   private _contentResetSub: any;
+  _contentRefreshSub: any;
   private _maxZoomLevel = 2; //percentage 200%
   private _minZoomLevel = 0.5; //percentage 50%
 
@@ -50,6 +51,47 @@ export class ReportEngineComponent implements OnInit, OnDestroy, AfterViewInit {
     if (this._contentResetSub) {
       this._contentResetSub.unsubscribe();
     }
+
+    this._contentRefreshSub.unsubscribe();
+  }
+
+  clickBtn() {
+    let svgViewableArea: any = this.hostElement.nativeElement.querySelector(
+      '#svgViewableArea'
+    );
+
+    let dimesions = this.getViewableAreaDimesion(svgViewableArea);
+
+    this._viewableAreaWidth = dimesions.viewableAreaWidth;
+
+    this._viewableAreaHeight = dimesions.viewableAreaHeight;
+
+    this._zoomedViewableAreaWidth = dimesions.viewableAreaWidth;
+
+    this._zoomedViewableAreaHeight = dimesions.viewableAreaHeight;
+
+    this._viewBoxAttribute = ` 0 0 ${
+      this._viewableAreaWidth * this.zoomPercentage
+    } ${this._viewableAreaHeight * this.zoomPercentage}`;
+
+    // let resizeData = {
+    //   viewableAreaHeight: this._viewableAreaHeight * this.zoomPercentage,
+    //   viewableAreaWidth: this._viewableAreaWidth * this.zoomPercentage,
+    //   translateAttribute: this._translateAttribute,
+    //   viewBoxAttribute: this._viewBoxAttribute,
+    // };
+
+    // let resizeTranslationDataStr = JSON.stringify(resizeData);
+
+    // this.sharedService.emmitResizeViewBoxString(resizeTranslationDataStr);
+
+    svgViewableArea.addEventListener('pointerdown', this.onPointerDown); // Pointer is pressed
+    svgViewableArea.addEventListener('pointerup', this.onPointerUp); // Releasing the pointer
+    svgViewableArea.addEventListener('pointerleave', this.onPointerUp); // Pointer gets out of the svgViewableArea area
+    svgViewableArea.addEventListener('pointermove', this.onPointerMove); // Pointer is moving
+    svgViewableArea.addEventListener('touchstart', this.onPointerDown); // Finger is touching the screen
+    svgViewableArea.addEventListener('touchend', this.onPointerUp); // Finger is no longer touching the screen
+    svgViewableArea.addEventListener('touchmove', this.onPointerMove); // Finger is moving
   }
 
   ngAfterViewInit(): void {
@@ -102,15 +144,6 @@ export class ReportEngineComponent implements OnInit, OnDestroy, AfterViewInit {
       this._viewBoxAttribute = `${this._viewBoxX} ${this._viewBoxY} ${
         dimesions.viewableAreaWidth * this.zoomPercentage
       } ${dimesions.viewableAreaHeight * this.zoomPercentage} `;
-
-      let resizeData = {
-        viewableAreaHeight: this._viewableAreaHeight * this.zoomPercentage,
-        viewableAreaWidth: this._viewableAreaWidth * this.zoomPercentage,
-        translateAttribute: this._translateAttribute,
-        viewBoxAttribute: this._viewBoxAttribute,
-      };
-
-      this.sharedService.emmitResizeViewBoxString(JSON.stringify(resizeData));
 
       // this.ratio =
       //   this._viewableAreaWidth / svgViewableArea.getBoundingClientRect().width;
@@ -243,7 +276,22 @@ export class ReportEngineComponent implements OnInit, OnDestroy, AfterViewInit {
       this._zoomedViewableAreaHeight = 1500;
       this.zoomPercentage = 1;
       this.roundedValue = Math.round(100 / this.zoomPercentage);
+
+      let resizeData = {
+        viewableAreaHeight: this._viewableAreaHeight * this.zoomPercentage,
+        viewableAreaWidth: this._viewableAreaWidth * this.zoomPercentage,
+        translateAttribute: this._translateAttribute,
+        viewBoxAttribute: this._viewBoxAttribute,
+      };
+
+      this.sharedService.emmitResizeViewBoxString(JSON.stringify(resizeData));
     });
+
+    this._contentRefreshSub = this.sharedService.contentRefresh.subscribe(
+      () => {
+        this.clickBtn();
+      }
+    );
   }
 
   // Commented for future references

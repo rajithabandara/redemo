@@ -100,5 +100,7 @@ export class Rectangle1Component implements OnInit, OnDestroy {
         // this.viewableAreaHeight = panDataObj.viewableAreaHeight;
       }
     );
+
+    this.sharedService.contentRefresh.emit();
   }
 }
