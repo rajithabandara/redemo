@@ -13,7 +13,8 @@ export class Rectangle1Component implements OnInit, OnDestroy {
   viewBoxAttribute = `0 0 1500 1500`;
   sharedServiceObservable: any;
   sharedServiceObservableZoom: any;
-
+  sharedServiceObservableResize: any;
+  sharedServiceObservablePan: any;
 
   constructor(private sharedService: SharedService) {}
   ngOnDestroy(): void {
@@ -43,6 +44,32 @@ export class Rectangle1Component implements OnInit, OnDestroy {
         this.viewBoxAttribute = zoomdataObj.viewBoxAttribute;
         this.viewableAreaWidth = zoomdataObj.viewableAreaWidth;
         this.viewableAreaHeight = zoomdataObj.viewableAreaHeight;
+      }
+    );
+
+    this.sharedServiceObservableResize = this.sharedService.resizeSharedMessage.subscribe(
+      (resizeData) => {
+        console.log(resizeData);
+
+        let resizeDataObj = JSON.parse(resizeData);
+
+        // this.translateAttribute = resizeDataObj.translateAttribute;
+        this.viewBoxAttribute = resizeDataObj.viewBoxAttribute;
+        this.viewableAreaWidth = resizeDataObj.viewableAreaWidth;
+        this.viewableAreaHeight = resizeDataObj.viewableAreaHeight;
+      }
+    );
+
+    this.sharedServiceObservablePan = this.sharedService.panSharedMessage.subscribe(
+      (panData) => {
+        console.log(panData);
+
+        let panDataObj = JSON.parse(panData);
+
+        // this.translateAttribute = resizeDataObj.translateAttribute;
+        this.viewBoxAttribute = panDataObj.viewBoxAttribute; //panDataObj.viewBoxAttribute;
+        // this.viewableAreaWidth = panDataObj.viewableAreaWidth;
+        // this.viewableAreaHeight = panDataObj.viewableAreaHeight;
       }
     );
   }

@@ -1,4 +1,9 @@
-<svg id="svgViewableArea" [attr.viewBox]="viewBoxAttribute" class="svgfull">
+<svg
+  id="svgViewableArea"
+  [attr.viewBox]="viewBoxAttribute"
+  preserveAspectRatio="xMidYMid slice"
+  class="svgfull"
+>
   <circle
     [attr.cx]="viewableAreaWidth / 2"
     [attr.cy]="viewableAreaHeight / 2"
@@ -19,12 +24,17 @@
       href="assets/report-engine-assets/photo.svg"
       transform="translate( 800 , 1800 )"
     /> -->
-    <rect
+
+    <image
+      href="https://upload.wikimedia.org/wikipedia/commons/0/0b/Mountains-1412683.svg"
+    />
+
+    <!-- <rect
       x="100"
       y="300"
       width="500"
       height="500"
       style="fill: rgba(0, 0, 0, 0.5); stroke-width: 3; stroke: rgb(0, 0, 0);"
-    />
+    /> -->
   </g>
 </svg>
