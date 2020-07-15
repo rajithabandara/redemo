@@ -19,23 +19,40 @@ export class Rectangle2Component implements OnInit, OnDestroy {
   public _cssUrl: string;
   private _sharedServiceObservable: any;
   private _themePublishedSub: any;
+  private _sharedServiceObservablePan: any;
+  private _sharedServiceObservableResize: any;
 
   constructor(
     private _sharedService: SharedService,
     private sanitizer: DomSanitizer
-  ) {}
+  ) {
+    this.loadStyle(3); // //Default theme load
+  }
 
   ngOnDestroy(): void {
     console.log('unsubscribe');
-    this._sharedServiceObservable.unsubscribe();
-    this._themePublishedSub.unsubscribe();
-    this.sharedServiceObservableZoom.unsubscribe();
-    this._sharedService.contentReset.emit();
+
+    if (this._sharedServiceObservable) {
+      this._sharedServiceObservable.unsubscribe();
+    }
+
+    if (this._themePublishedSub) {
+      this._themePublishedSub.unsubscribe();
+    }
+
+    if (this.sharedServiceObservableZoom) {
+      this.sharedServiceObservableZoom.unsubscribe();
+    }
+    if (this._sharedServiceObservableResize) {
+      this._sharedServiceObservableResize.unsubscribe();
+    }
+    if (this._sharedServiceObservablePan) {
+      this._sharedServiceObservablePan.unsubscribe();
+    }
   }
   ngOnInit(): void {
+    this._sharedService.contentReset.emit(true);
     this.registerEvent();
-    //Default theme load
-    this.loadStyle(3);
   }
 
   private registerEvent() {
@@ -67,6 +84,32 @@ export class Rectangle2Component implements OnInit, OnDestroy {
         this.viewBoxAttribute = zoomdataObj.viewBoxAttribute;
         this.viewableAreaWidth = zoomdataObj.viewableAreaWidth;
         this.viewableAreaHeight = zoomdataObj.viewableAreaHeight;
+      }
+    );
+
+    this._sharedServiceObservableResize = this._sharedService.resizeSharedMessage.subscribe(
+      (resizeData) => {
+        console.log(resizeData);
+
+        let resizeDataObj = JSON.parse(resizeData);
+
+        // this.translateAttribute = resizeDataObj.translateAttribute;
+        this.viewBoxAttribute = resizeDataObj.viewBoxAttribute;
+        this.viewableAreaWidth = resizeDataObj.viewableAreaWidth;
+        this.viewableAreaHeight = resizeDataObj.viewableAreaHeight;
+      }
+    );
+
+    this._sharedServiceObservablePan = this._sharedService.contentPaning.subscribe(
+      (panData) => {
+        console.log(panData);
+
+        let panDataObj = JSON.parse(panData);
+
+        // this.translateAttribute = resizeDataObj.translateAttribute;
+        this.viewBoxAttribute = panDataObj.viewBoxAttribute; //panDataObj.viewBoxAttribute;
+        // this.viewableAreaWidth = panDataObj.viewableAreaWidth;
+        // this.viewableAreaHeight = panDataObj.viewableAreaHeight;
       }
     );
 

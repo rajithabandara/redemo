@@ -30,41 +30,21 @@ export class Rectangle1Component implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     console.log('unsubscribed');
-    this._sharedService.contentReset.emit();
-    this._sharedServiceObservable.unsubscribe();
 
-    this.sharedServiceObservableZoom.unsubscribe();
+    if (this._sharedServiceObservable) {
+      this._sharedServiceObservable.unsubscribe();
+    }
+
+    if (this.sharedServiceObservableZoom) {
+      this.sharedServiceObservableZoom.unsubscribe();
+    }
+
     if (this._themePublishedSub) {
       this._themePublishedSub.unsubscribe();
     }
   }
   ngOnInit(): void {
-    // this.registerEvent();
-    // this._sharedServiceObservable = this._sharedService.sharedMessage.subscribe(
-    //   (translationDataStr) => {
-    //     console.log(translationDataStr);
-
-    //     let translationData = JSON.parse(translationDataStr);
-    //     this.viewableAreaWidth = translationData.viewableAreaWidth;
-    //     this.viewableAreaHeight = translationData.viewableAreaHeight;
-    //     this.translateAttribute = translationData.translateAttribute;
-    //     this.viewBoxAttribute = translationData.viewBoxAttribute;
-    //   }
-    // );
-
-    // this.sharedServiceObservableZoom = this.sharedService.zoomSharedMessage.subscribe(
-    //   (zoomdata) => {
-    //     console.log(zoomdata);
-
-    //     let zoomdataObj = JSON.parse(zoomdata);
-
-    //     this.translateAttribute = zoomdataObj.translateAttribute;
-    //     this.viewBoxAttribute = zoomdataObj.viewBoxAttribute;
-    //     this.viewableAreaWidth = zoomdataObj.viewableAreaWidth;
-    //     this.viewableAreaHeight = zoomdataObj.viewableAreaHeight;
-    //   }
-    // );
-
+    this._sharedService.contentReset.emit();
     this._sharedServiceObservable = this._sharedService.contentCentered.subscribe(
       (translationDataStr) => {
         console.log(translationDataStr);
@@ -83,7 +63,7 @@ export class Rectangle1Component implements OnInit, OnDestroy {
 
         let zoomdataObj = JSON.parse(zoomdata);
 
-        this.translateAttribute = zoomdataObj.translateAttribute;
+        // this.translateAttribute = zoomdataObj.translateAttribute;
         this.viewBoxAttribute = zoomdataObj.viewBoxAttribute;
         this.viewableAreaWidth = zoomdataObj.viewableAreaWidth;
         this.viewableAreaHeight = zoomdataObj.viewableAreaHeight;
@@ -103,7 +83,7 @@ export class Rectangle1Component implements OnInit, OnDestroy {
       }
     );
 
-    this.sharedServiceObservablePan = this._sharedService.panSharedMessage.subscribe(
+    this.sharedServiceObservablePan = this._sharedService.contentPaning.subscribe(
       (panData) => {
         console.log(panData);
 

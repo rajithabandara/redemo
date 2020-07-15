@@ -31,6 +31,7 @@ export class SharedService {
   contentReset = new EventEmitter<boolean>();
   contentCentered = new EventEmitter<string>();
   contentRefresh = new EventEmitter<boolean>();
+  contentPaning = new EventEmitter<string>();
 
   constructor() {}
 

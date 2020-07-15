@@ -1,7 +1,7 @@
-<svg id="svgViewableArea" class="svgfull" xmlns="http://www.w3.org/2000/svg">
+<!-- <svg id="svgViewableArea" class="svgfull" xmlns="http://www.w3.org/2000/svg">
   <circle
-  [attr.cx]="viewableAreaWidth / 2"
-  [attr.cy]="viewableAreaHeight / 2"
+    [attr.cx]="viewableAreaWidth / 2"
+    [attr.cy]="viewableAreaHeight / 2"
     r="10"
   ></circle>
   <g id="reportArea" [attr.transform]="translateAttribute">
@@ -10,11 +10,142 @@
       y="300"
       width="2000"
       height="1500"
-      style="
-        fill: rgba(0, 0, 0, 0.5);
-        stroke-width: 3;
-        stroke: rgb(0, 0, 0);
-      "
+      style="fill: rgba(0, 0, 0, 0.5); stroke-width: 3; stroke: rgb(0, 0, 0);"
     />
+  </g>
+</svg> -->
+<!-- <svg id="svgViewableArea" class="svgfull" xmlns="http://www.w3.org/2000/svg">
+  <circle
+    [attr.cx]="viewableAreaWidth / 2"
+    [attr.cy]="viewableAreaHeight / 2"
+    r="10"
+  ></circle>
+  <g id="reportArea" [attr.transform]="translateAttribute">
+    <rect
+      x="100"
+      y="300"
+      width="2000"
+      height="1500"
+      style="fill: rgba(0, 0, 0, 0.5); stroke-width: 3; stroke: rgb(0, 0, 0);"
+    />
+  </g>
+</svg> -->
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap"
+  rel="stylesheet"
+/>
+
+<svg
+  id="svgViewableArea"
+  class="svgfull"
+  style="
+    margin: auto;
+    border: 1px solid green;
+    padding: 10px;
+    font-family: 'Tangerine', cursive;
+  "
+  [attr.viewBox]="viewBoxAttribute"
+  preserveAspectRatio="xMidYMid slice"
+>
+  <!-- <image href="/assets/sunchart.jpg" height="800" width="800" opacity=".05" /> -->
+  <g [attr.transform]="translateAttribute">
+    <!-- base frame -->
+
+    <g id="reportArea" [attr.visibility]="baseGrid.visibility">
+      <image
+        transform="translate(-400 -400)"
+        [attr.visibility]="baseGrid.visibility"
+        href="/assets/sunchart.jpg"
+        height="800"
+        width="800"
+        opacity="0.05"
+      />
+      <!-- <rect
+        x="-400"
+        y="-400"
+        width="800"
+        height="800"
+        style="fill: none; stroke-width: 1px; stroke: lightgray;"
+      ></rect> -->
+      <!-- grid lines -->
+      <!-- <line
+        [attr.x1]="baseGrid.X.x1"
+        [attr.y1]="baseGrid.X.y1"
+        [attr.x2]="baseGrid.X.x2"
+        [attr.y2]="baseGrid.X.y2"
+        style="stroke: lightgray; stroke-width: 1;"
+      />
+      <line
+        [attr.x1]="baseGrid.Y.x1"
+        [attr.y1]="baseGrid.Y.y1"
+        [attr.x2]="baseGrid.Y.x2"
+        [attr.y2]="baseGrid.Y.y2"
+        style="stroke: lightgray; stroke-width: 1;"
+      /> -->
+
+      <!-- Helpers -->
+      <!-- point indicator -->
+      <circle
+        *ngFor="let helper of helpers"
+        [attr.cx]="helper.cx"
+        [attr.cy]="helper.cy"
+        r="3"
+        stroke="black"
+        stroke-width="1"
+        fill="none"
+        style="visibility: hidden;"
+      />
+    </g>
+
+    <!-- base grapics -->
+    <image
+      *ngFor="let chartGraphic of chartGraphics; index as i"
+      [attr.href]="chartGraphic.url"
+      [attr.x]="chartGraphic.x"
+      [attr.y]="chartGraphic.y"
+      [attr.height]="chartGraphic.h"
+      [attr.width]="chartGraphic.w"
+    />
+
+    <circle
+      [attr.cx]="chartLevel1.cx"
+      [attr.cy]="chartLevel1.cy"
+      [attr.r]="chartLevel1.r"
+      stroke="black"
+      stroke-width="1"
+      fill="none"
+    />
+
+    <path
+      *ngFor="let level of chartLevels; index as i"
+      [attr.transform]="level.transform"
+      fill="none"
+      [attr.d]="level.path"
+      style="stroke: black; stroke-width: 1;"
+    />
+
+    <defs>
+      <path
+        [attr.id]="'textPath' + i"
+        *ngFor="let level of chartLevels; index as i"
+        [attr.transform]="level.transform"
+        fill="none"
+        [attr.d]="level.pathText"
+        style="stroke: bisque; stroke-width: 1;"
+      />
+    </defs>
+    <text *ngFor="let level of chartLevels; index as i" transform="scale(1,1)">
+      <textPath
+        [attr.xlink:href]="'#textPath' + i"
+        startOffset="50%"
+        text-anchor="middle"
+      >
+        <tspan>Elizabeth Laura King</tspan>
+        <tspan style="font-size: 7px; fill: lightblue;" display="">
+          1975 - 1985
+        </tspan>
+      </textPath>
+    </text>
   </g>
 </svg>
