@@ -148,6 +148,16 @@ export class ReportEngineComponent implements OnInit, OnDestroy, AfterViewInit {
       // this.ratio =
       //   this._viewableAreaWidth / svgViewableArea.getBoundingClientRect().width;
       // console.log('"ratio - ' + this.ratio);
+
+      let resizeData = {
+        viewableAreaHeight: this._viewableAreaHeight * this.zoomPercentage,
+        viewableAreaWidth: this._viewableAreaWidth * this.zoomPercentage,
+        translateAttribute: this._translateAttribute,
+        viewBoxAttribute: this._viewBoxAttribute,
+      };
+
+      this.sharedService.emmitResizeViewBoxString(JSON.stringify(resizeData));
+      
     });
   }
 
