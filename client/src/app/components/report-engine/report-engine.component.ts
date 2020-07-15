@@ -104,8 +104,8 @@ export class ReportEngineComponent implements OnInit, OnDestroy, AfterViewInit {
     let dimesions = this.getViewableAreaDimesion(svgViewableArea);
     this._viewableAreaWidth = dimesions.viewableAreaWidth;
     this._viewableAreaHeight = dimesions.viewableAreaHeight;
-    // this._zoomedViewableAreaWidth = dimesions.viewableAreaWidth;
-    // this._zoomedViewableAreaHeight = dimesions.viewableAreaHeight;
+    this._zoomedViewableAreaWidth = dimesions.viewableAreaWidth;
+    this._zoomedViewableAreaHeight = dimesions.viewableAreaHeight;
 
     console.log(reportArea);
 

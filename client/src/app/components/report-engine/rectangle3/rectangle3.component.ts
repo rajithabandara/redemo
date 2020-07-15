@@ -126,12 +126,13 @@ export class Rectangle3Component implements OnInit, OnDestroy {
         console.log(translationDataStr);
 
         let translationData = JSON.parse(translationDataStr);
-
+        this.viewBoxAttribute = translationData.viewBoxAttribute;
         this.translateAttribute = translationData.translateAttribute;
         this.viewableAreaWidth = translationData.viewableAreaWidth;
         this.viewableAreaHeight = translationData.viewableAreaHeight;
       }
     );
+
     this.sharedServiceObservableZoom = this._sharedService.contentZoomed.subscribe(
       (zoomdata) => {
         console.log(zoomdata);

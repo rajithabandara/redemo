@@ -63,7 +63,7 @@ export class Rectangle1Component implements OnInit, OnDestroy {
 
         let zoomdataObj = JSON.parse(zoomdata);
 
-        // this.translateAttribute = zoomdataObj.translateAttribute;
+        this.translateAttribute = zoomdataObj.translateAttribute;
         this.viewBoxAttribute = zoomdataObj.viewBoxAttribute;
         this.viewableAreaWidth = zoomdataObj.viewableAreaWidth;
         this.viewableAreaHeight = zoomdataObj.viewableAreaHeight;
