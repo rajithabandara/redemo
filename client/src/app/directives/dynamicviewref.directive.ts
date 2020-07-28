@@ -1,8 +1,10 @@
-import { Directive, ViewContainerRef } from '@angular/core';
+import { Directive, ViewContainerRef, Input } from '@angular/core';
 
 @Directive({
   selector: '[appDynamicviewref]',
 })
 export class DynamicviewrefDirective {
+  @Input() title: string;
+
   constructor(public vcr: ViewContainerRef) {}
 }
