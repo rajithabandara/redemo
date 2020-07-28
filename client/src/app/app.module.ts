@@ -16,7 +16,10 @@ import { DynamicCirclesComponent } from './components/report-engine/dynamic-circ
 import { DynamicRectanglesComponent } from './components/report-engine/dynamic-rectangles/dynamic-rectangles.component';
 import { DynamicEllipseComponent } from './components/report-engine/dynamic-ellipse/dynamic-ellipse.component';
 import { DynamicPolygonComponent } from './components/report-engine/dynamic-polygon/dynamic-polygon.component';
-
+import { Dynamiccomp1Component } from './components/report-engine/dynamiccomp1/dynamiccomp1.component';
+import { Dynamiccomp2Component } from './components/report-engine/dynamiccomp2/dynamiccomp2.component';
+import { DynamicviewrefDirective } from './directives/dynamicviewref.directive';
+import { DynamicloaderComponent } from './components/report-engine/dynamicloader/dynamicloader.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { DynamicPolygonComponent } from './components/report-engine/dynamic-poly
     DynamicRectanglesComponent,
     DynamicEllipseComponent,
     DynamicPolygonComponent,
-  
+    Dynamiccomp1Component,
+    Dynamiccomp2Component,
+    DynamicviewrefDirective,
+    DynamicloaderComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [SharedService],
